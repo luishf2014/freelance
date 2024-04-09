@@ -1,0 +1,106 @@
+p{
+    text-align: center;
+}
+.button {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 10px 60px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+    
+}
+.button:hover{
+    background-color: rgba(248, 170, 52, 0.5);
+}
+.button1 {
+    background-color: rgb(70, 70, 247);
+    border: none;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 18px;
+    margin: 4px 2px;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.button1:hover{
+    background-color: rgba(75, 124, 216, 0.5);
+}
+.button2 {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 10px 60px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.button2:hover{
+    background-color: rgba(75, 124, 216, 0.5);
+}
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.rodape-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redes-sociais {
+    flex: 1;
+}
+
+.redes-sociais a {
+    margin: 0 10px;
+}
+
+.redes-sociais img {
+    width: 30px; /* Defina a largura desejada para as imagens */
+}
+
+.direitos-autorais {
+    margin-top: 20px;
+}
+.imagem-container {
+    display: flex; /* Isso cria um container flexível */
+    justify-content: space-between; /* Coloca as imagens com espaço entre elas */
+    align-items: center;
+    margin-left: 50px;
+}
+.imagem-container img {
+    max-width: 60%; /* Define a largura máxima das imagens para ocupar 60% do espaço cada */
+}
+.elemento1 {
+    margin-right: 50px; /* Adiciona espaço à direita do elemento 1 */
+} 
+
+.container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container main{
+    background-color: transparent;
+    border: 0;
+    flex: 1 1 0;
+}

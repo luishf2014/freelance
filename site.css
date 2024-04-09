@@ -364,15 +364,7 @@
 /*---------------------------------------------------------------------------------------*/
 /*Descktop*/
 @media (min-width: 769px) {
-    body {
-        margin: 0;
-        font-size: 16px;
-        color: #333;
-    }
-    .responD {
-        width: 100%;
-        margin: 0 auto;
-    }
+    
     header {
         background-color: rgb(152, 152, 152);
         display: flex;
@@ -398,6 +390,7 @@
 
     .logo-texto {
         display: flex;
+        font-size: 1em;
         margin-left: 30px;
         color: rgb(0, 0, 0);
     }
@@ -503,7 +496,7 @@
     }
 
     .botoes {
-        margin-left: 260px;
+        margin-left: 200px;
         display: flex;
     }
 

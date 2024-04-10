@@ -14,7 +14,7 @@
     }
 
     .responD {
-        width: 95%;
+        width: 100%;
     }
     header {
         background-color: black;
@@ -484,8 +484,8 @@
     }
 
     .imagem-apresentação {
-        margin-left: 70px;
-        margin-right: 70px;
+        margin-left: auto;
+        margin-right: auto;
         width: 370px;
         height: 380px;
     }
@@ -494,9 +494,16 @@
         padding-top: 10px;
         display: flex;
     }
+    .produto1{
+        margin-left: 20%;
+    }
+    .servico{
+        margin-left: 20%;
+    }
+    
 
     .botoes {
-        margin-left: 200px;
+        margin-left: 23%;
         display: flex;
     }
 

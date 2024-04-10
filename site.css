@@ -147,12 +147,12 @@
     }
 
     .prev {
-        left: 20px;
+        left: 5%;
         /* Distância do lado esquerdo */
     }
 
     .next {
-        right: 20px;
+        right: 5%;
         /* Distância do lado direito */
     }
 
@@ -343,12 +343,12 @@
     }
 
     .prev {
-        left: 50px;
+        left: 5%;
         /* Distância do lado esquerdo */
     }
 
     .next {
-        right: 50px;
+        right: 5%;
         /* Distância do lado direito */
     }
 

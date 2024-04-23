@@ -496,26 +496,13 @@
         height: 380px;
     }
 
-    .produto {
-        padding-top: 10px;
-        display: flex;
-    }
-    .produto1{
-        margin-left: 20%;
-    }
-    .servico{
-        margin-left: 20%;
-    }
-    
-
     .botoes {
-        margin-left: 23%;
+        justify-content: center;
         display: flex;
+        gap: 1rem;
     }
 
-    .botoes1 {
-        margin-right: 50px;
-    }
+    
 }
 
 /*---------------------------------------------------------------------------------------*/
@@ -526,6 +513,14 @@
     padding: 10px;
 }
 
+/*----------------------------------------------------------------------------------------*/
+/* produto */
+.produto{
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+    
+}
 /*----------------------------------------------------------------------------------------*/
 /* Rodapé*/
 footer {

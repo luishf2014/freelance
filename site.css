@@ -123,14 +123,7 @@
     }
 
     .slide {
-        display: none;
-        width: 65%;
-        height: auto;
-        margin: auto;
-        opacity: 0;
-        /* Adicionado */
-        transition: opacity 0.5s ease;
-        /* Adicionado */
+        width: 70%;
     }
 
     .prev,
@@ -146,6 +139,7 @@
         top: 60%;
         transform: translateY(-50%);
         cursor: pointer;
+        
         z-index: 1;
         /* Adicionado para garantir que as setas fiquem acima das imagens */
     }
@@ -162,7 +156,6 @@
 
     .produto {
         padding-top: 10px;
-        display: 
     }
 
     .botoes {
@@ -260,7 +253,7 @@
     nav a {
         color: #fff;
         text-decoration: none;
-        margin: 10px;
+        margin: 2px;
         display: block;
         padding: 10px 15px;
         border-radius: 15px;
@@ -320,14 +313,7 @@
     }
 
     .slide {
-        display: none;
         width: 65%;
-        height: auto;
-        margin: auto;
-        opacity: 0;
-        /* Adicionado */
-        transition: opacity 0.5s ease;
-        /* Adicionado */
     }
 
     .prev,
@@ -348,12 +334,12 @@
     }
 
     .prev {
-        left: 5%;
+        left: 10%;
         /* Distância do lado esquerdo */
     }
 
     .next {
-        right: 5%;
+        right: 10%;
         /* Distância do lado direito */
     }
 
@@ -364,7 +350,9 @@
     }
 
     .botoes {
-        align-items: center;
+        justify-content: center;
+        display: flex;
+        gap: 1rem;
     }
 
     .footer {
@@ -475,8 +463,7 @@
     }
 
     .principal {
-        margin-left: 200px;
-        margin-right: 50px;
+        margin-left: 15rem;
 
     }
 
@@ -514,6 +501,20 @@
         gap: 10rem;
     }
     
+    .prev {
+        left: 16%;
+        /* Distância do lado esquerdo */
+    }
+
+    .next {
+        right: 16%;
+        /* Distância do lado direito */
+    }
+    
+    .slide {
+        width: 50%;
+    }
+
 }
 
 /*---------------------------------------------------------------------------------------*/

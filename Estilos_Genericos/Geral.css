@@ -1,0 +1,19 @@
+/*Zerar a página*/
+* {
+    padding: 0;
+    margin: 0;
+    /* text-align: center; */
+    font-family: "Grenze", serif;
+
+}
+
+/*---------------------------------------------------------------------------------------*/
+
+/* Paragráfo */
+* p {
+    margin: 0;
+    font-size: 1em;
+    font-family: "Grenze", serif;
+    font-weight: 300;
+    text-align: center;
+}

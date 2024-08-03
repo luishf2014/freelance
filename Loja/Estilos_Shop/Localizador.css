@@ -1,0 +1,26 @@
+.content {
+    padding: 20px;
+}
+
+.section {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+}
+
+.scroll-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.scroll-button:hover {
+    background-color: #0056b3;
+}

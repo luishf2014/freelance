@@ -1,0 +1,318 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Loja/Estilos_Shop/Descktop_Shop.css">
+    <link rel="stylesheet" href="/Loja/Estilos_Shop/Papeis_Shop.css">
+    <link rel="stylesheet" href="/Estilos_Genericos/Botao.css">
+    <link rel="stylesheet" href="/Estilos_Genericos/Geral.css">
+    <link rel="stylesheet" href="/Loja/Estilos_Shop/Slider.css">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))'
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+				:root {
+					--background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 240 5.9% 10%;
+--primary-foreground: 0 0% 98%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 240 5.9% 10%;
+--radius: 0.5rem;
+				}
+				.dark {
+					--background: 240 10% 3.9%;
+--foreground: 0 0% 98%;
+--card: 240 10% 3.9%;
+--card-foreground: 0 0% 98%;
+--popover: 240 10% 3.9%;
+--popover-foreground: 0 0% 98%;
+--primary: 0 0% 98%;
+--primary-foreground: 240 5.9% 10%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 240 3.7% 15.9%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 240 3.7% 15.9%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 240 4.9% 83.9%;
+				}
+			}
+		</style>
+    <Style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            margin-bottom: 20px;
+        }
+
+        .description p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .box {
+            background-color: #eee;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .box li {
+            margin-bottom: 5px;
+        }
+    </Style>
+</head>
+
+
+<body>
+    <main style="min-height: 210vh;;">
+        <header>
+            <!-- Seu cabeçalho aqui -->
+            <div class="container-logo">
+                <div><a href="apresentacao.html"><img src="..\Uploads\logoMenor.png" alt="marca"
+                            class="logo-imagem"></a>
+                </div>
+                <!-- <div class="logo-texto">
+                <h3>
+                    <p><I>CAMISA 10</I></p>
+                </h3>
+            </div> -->
+            </div><!-- container-logo -->
+            <nav class="menu"><!-- Seu menu de navegação aqui -->
+                <ul class="ul-mobile">
+                    <li><a href="../Apresentação/apresentacao.html" class="elemento1"
+                            style="border-bottom-width: 0px;">Quem
+                            Somos</a></li>
+                    <!-- <li><a href="../Loja/shop.html" class="elemento1">Shop</a></li>
+                <li><a href="https://raza589.gendo.app/#/" class="elemento1">Agende seu horário</a></li> -->
+                    <!-- <li><a href="login.html" class="elemento1"> login</a></li> -->
+                </ul>
+            </nav>
+        </header>
+        <section class="pontilhado">
+
+            <div
+                class="flex flex-col md:flex-row p-6 bg-background rounded-lg shadow-lg transition duration-300 hover:shadow-xl">
+                <div class="w-full md:w-1/2">
+                    <div class="flex flex-col">
+                        <img class="w-full h-auto rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105"
+                            src="https://placehold.co/600x400" alt="Product Image" />
+                        <div class="flex space-x-2 mt-2">
+                            <img class="w-16 h-16 object-cover rounded-lg border border-primary transition duration-300 hover:scale-105"
+                                src="https://placehold.co/100x100" alt="Thumbnail 1" />
+                            <img class="w-16 h-16 object-cover rounded-lg border border-primary transition duration-300 hover:scale-105"
+                                src="https://placehold.co/100x100" alt="Thumbnail 2" />
+                            <img class="w-16 h-16 object-cover rounded-lg border border-primary transition duration-300 hover:scale-105"
+                                src="https://placehold.co/100x100" alt="Thumbnail 3" />
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 p-4">
+                    <h1 class="text-4xl font-bold text-primary mb-2">Tesoura Fio Navalha Titan A60 6.0 Polegadas</h1>
+                    <p class="text-muted-foreground text-lg">Fundada em 1918</p>
+                    <div style="display:flex;">
+                        <p class="text-black-50 line-through text-lg">De: R$ 489,99</p>
+                        <p class="text-red-500 font-bold text-lg" style="margin-left: 1rem;">-23%</p>
+                    </div>
+
+
+                    <p class="text-green-500 text-3xl font-semibold text-accent">POR: R$ 376,33</p>
+                    <div class="mt-4">
+                        <button class="ButtonB">COMPRAR</button>
+                    </div>
+                    <div class="mt-4">
+                        <h2 class="text-lg font-semibold">Formas de pagamento</h2>
+                        <p class="text-muted-foreground">No cartão em até 4x de R$ 94,08 sem juros</p>
+                    </div>
+                    <div class="mt-4">
+                        <h2 class="text-lg font-semibold">Calcule o frete</h2>
+                        <input type="text" placeholder="00000-000"
+                            class="border border-border p-2 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-primary transition duration-300" />
+                        <button
+                            class="bg-primary text-primary-foreground hover:bg-primary/80 p-2 rounded-lg mt-2 transition duration-300 shadow-md hover:shadow-lg">Calcular</button>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-muted-foreground text-sm">* Cálculo estimado, o prazo de entrega pode variar a
+                            partir
+                            do
+                            momento da compra.</p>
+                    </div>
+                </div>
+            </div>
+            <section class="pontilhado" >
+                <div class="container">
+                    <h1>Tesoura Fio Navalha Titan</h1>
+                    <div class="description">
+                        <p>A Tesoura Fio Navalha Titan A60 é feita de um aço sus440c especializado de alto qualidade.</p>
+                        <p>A tesoura Tesoura Fio Navalha Titan TDW60 é projetada para cortes de cabelo úmido ou seco, porém com maior precisão em cortes a seco. Esta tesoura é projetada com uma lâmina super afiada desenvolvendo um corte perfeitamente equilibrado e super liso.</p>
+                    </div>
+                    <h2>Características:</h2>
+                    <ul>
+                        <li>Feito de aço sus440c premium;</li>
+                        <li>É 100% feito à mão e afiada a mãos;</li>
+                        <li>Para uso com a mão direita;</li>
+                        <li>É produzido para barbeiros e salões de cabeleireiro profissionais;</li>
+                        <li>É bem embalado para evitar danos durante a fase de envio e enviado no mesmo dia;</li>
+                        <li>As tesouras são verificadas duas vezes antes do envio;</li>
+                    </ul>
+                    <div class="box">
+                        <h3>O que vem na caixa?</h3>
+                        <ul>
+                            <li>01 Tesoura Fio Navalha Titan TJ60</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="torn-divider2-Shop" style="position:relative; bottom: -15px;"></div>
+            </section>
+        </section>
+        <!-- <div class="pontilhado2" style="height: 300px; position: relative; bottom: 20; z-index: 0;">
+            
+        </div> -->
+
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="redes-sociais">
+                <h2>
+                    <p>- Redes Sociais -</p>
+                </h2>
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="..\Uploads\logoInstagram.jpeg" alt="Instagram" class="redes-sociais">
+                </a>
+                <!-- <p>@camisa10.barbearia_</p> -->
+            </div>
+            <div class="horario">
+                <h2>
+                    <p> - Horários - </p>
+                </h2>
+                <h5>
+                    <p>Terça à Sexta: 09h às 19h | Sábado 09:30h às 18h | Domingo e Segunda: Fechado</p>
+                </h5>
+            </div>
+            <div class="redes-sociais"> <!--class="contato"-->
+                <h2>
+                    <p>- Contato - </p>
+                </h2>
+                <!-- <p>Email: contato@camisa10.barbearia.com</p> -->
+                <!-- <p>Telefone: (99) 99999-9999</p> -->
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="https://t3.ftcdn.net/jpg/05/32/20/62/240_F_532206245_N1xYEHrZVIWU1ihamWwmDbh1gZWGU7Jl.jpg"
+                        alt="Instagram" class="redes-sociais">
+                </a>
+            </div>
+
+        </div>
+        <div class="direitos-autorais">
+            <p>&copy; 2024 - Luis Henrique Mota da Fonseca</p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

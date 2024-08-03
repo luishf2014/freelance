@@ -1,0 +1,61 @@
+/* botão para o fundo Branco*/
+.buttonB {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 0px;
+    font-family: "Grenze", serif;
+    font-weight: 300;
+    font-size: 23px;
+    letter-spacing: 1px;
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    text-transform: uppercase;
+    padding: 5px 20px;
+    border-radius: 100px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 1s ease;
+    /* Adiciona transição suave */
+}
+
+.buttonB:hover {
+    /* background-color: rgba(100, 100, 100, 0.082); */
+    color: black;
+    background-color: white;
+    transform: translateY(-5px);
+    /* Adiciona o efeito de flutuação */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    /* Adiciona a sombra */
+}
+
+/* botão para o fundo Preto*/
+.buttonP {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 0px;
+    font-family: "Grenze", serif;
+    font-weight: 300;
+    font-size: 23px;
+    letter-spacing: 1px;
+    font-style: normal;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    text-transform: uppercase;
+    padding: 5px 20px;
+    border-radius: 100px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 1s ease;
+    /* Adiciona transição suave */
+}
+
+.buttonP:hover {
+    /* background-color: rgba(100, 100, 100, 0.082); */
+    color: white;
+    background-color: black;
+    transform: translateY(-5px);
+    /* Adiciona o efeito de flutuação */
+    box-shadow: 1px 5px 15px rgba(255, 255, 255, 0.682);
+    /* Adiciona a sombra */
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camisa 10</title>
+    <!-- Pasta De Estilo -->
+    <link rel="stylesheet" href="../Apresentação/Estilos_Apresentacao/Descktop_Apre.css">
+    <link rel="stylesheet" href="../Apresentação/Estilos_Apresentacao/Papeis.css">
+    <link rel="stylesheet" href="../Estilos_Genericos/Botao.css">
+    <link rel="stylesheet" href="../Estilos_Genericos/Geral.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
+    <!-- Mapa -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <style>
+        .slider-container {
+            padding-top: 4rem;
+            position: relative;
+            height: auto;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            /* Transição suave para deslizamento */
+        }
+
+        .prev,
+        .next {
+            background-color: gray;
+            color: white;
+            padding: 5px 12px;
+            text-align: center;
+            font-size: 16px;
+            transition: 0.3s;
+            border-radius: 100px;
+            position: absolute;
+            top: 60%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 1;
+            /* Adicionado para garantir que as setas fiquem acima das imagens */
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgb(241, 18, 18);
+        }
+
+        .dots {
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            z-index: 1;
+            /* Adicionado para garantir que as bolinhas fiquem acima das imagens */
+        }
+
+        .dot {
+            display: inline-block;
+            width: 30px;
+            height: 4px;
+            margin: -45px 5px;
+            background-color: rgb(129, 129, 129);
+            /* border: 1px solid rgb(116, 116, 116); */
+            /* border-radius: 50%; */
+        }
+
+        .active {
+            background-color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body class="responD">
+
+    <header>
+        <!-- Seu cabeçalho aqui -->
+        <div class="container-logo">
+            <div><a href="apresentacao.html"><img src="..\Uploads\logoMenor.png" alt="marca" class="logo-imagem"></a>
+            </div>
+            <!-- <div class="logo-texto">
+                <h3>
+                    <p><I>CAMISA 10</I></p>
+                </h3>
+            </div> -->
+        </div><!-- container-logo -->
+        <nav class="menu"><!-- Seu menu de navegação aqui -->
+            <ul class="ul-mobile">
+                <li><a href="../Loja/Shop2.html" class="elemento1">Shop2</a></li> <!--Quem Somos -->
+                <li><a href="../Loja/shop.html" class="elemento1">Shop1</a></li>
+                <li><a href="https://raza589.gendo.app/#/" class="elemento1">Agende seu horário</a></li>
+                <!-- <li><a href="login.html" class="elemento1"> login</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- class="sombra" -->
+        <section>
+            <section class="pontilhado">
+                <section style="height:270px">
+                    <div>
+                        <h1 class="principal">
+                            <p>Conheça a Barbearia Camisa 10</p>
+                        </h1>
+
+                    </div>
+                    <div class="torn-divider"></div>
+                </section>
+                <div>
+                    <img src="../Uploads/logoMenor.png" alt="imagem-apresentação" class="imagem-apresentação">
+                    <!-- style="margin-left: auto; margin-right: auto; width: 370px;"     -->
+
+                    <h1 style="padding-top: 4rem;">
+                        <p>Quem Somos</p>
+                    </h1>
+                    <h4>
+                        <p style="margin-left: 600px; margin-right: 70px;">
+                            <br>
+                            Conheça a Barbearia Camisa 10: onde a paixão pelo futebol se encontra com o estilo
+                            masculino.
+                            Nossa equipe de barbeiros habilidosos oferece cortes impecáveis, enquanto você desfruta de
+                            um
+                            ambiente acolhedor e descontraído. Descubra uma experiência única de cuidado pessoal.
+                            Bem-vindo
+                            à Camisa 10, onde cada cliente é tratado como um verdadeiro craque.
+                        </p>
+                    </h4>
+                    <h1 style="padding-top: 0.5rem;">
+                        <p>Nosso Diferencial</p>
+                    </h1>
+                    <h4>
+                        <p style="margin-left: 600px; margin-right: 70px;">
+                            Na Barbearia Camisa 10, fundimos a paixão pelo futebol com a arte do cuidado pessoal
+                            masculino.
+                            Com barbeiros talentosos, uma atmosfera acolhedora e produtos de qualidade, oferecemos mais
+                            do
+                            que um simples corte de cabelo - proporcionamos uma experiência única e memorável. Junte-se
+                            a
+                            nós para uma transformação de estilo e uma dose extra de camaradagem. Bem-vindo à família
+                            Camisa
+                            10."
+                        </p>
+                    </h4>
+                </div>
+            </section>
+            <section style="padding-top: 30px;" class="pontilhado">
+                <div class="slider-container">
+                    <div class="slider">
+                        <img src="https://www.datitia.com.br/media/wysiwyg/corte-cabelo-masculino.jpg" alt="Imagem 1"
+                            class="slide">
+                        <img src='https://cdn.eutotal.com/imagens/corte-cabelo-masculino8.jpg' alt="Imagem 2"
+                            class="slide">
+                        <img src="https://donalcides.com.br/wp-content/uploads/2023/05/cortes-de-cabelo-masculino-degrade.jpg"
+                            alt="Imagem 3" class="slide">
+                    </div>
+                    <div class="prev" onclick="plusSlides(-1)">&#10094;</div>
+                    <!-- Adicionado botão de seta para esquerda -->
+                    <div class="next" onclick="plusSlides(1)">&#10095;</div>
+                    <!-- Adicionado botão de seta para direita -->
+                    <div class="dots">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+
+                <!-- <script src="../Scripts/script.js"></script> -->
+                <script>
+                    let slideIndex = 0;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        let i;
+                        const slides = document.getElementsByClassName("slide");
+                        const dots = document.getElementsByClassName("dot");
+                        if (n > slides.length) {
+                            slideIndex = 1;
+                        }
+                        if (n < 1) {
+                            slideIndex = slides.length;
+                        }
+
+                        for (i = 0; i < slides.length; i++) {
+                            // slides[i].style.opacity = "0";
+
+                            slides[i].style.display = "none"; // Adicionado para garantir que as imagens não sejam exibidas quando a opacidade for 0
+                        }
+                        for (i = 0; i < dots.length; i++) {
+
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+
+
+                        setTimeout(function () {
+                            slides[slideIndex - 1].style.opacity = "1";
+
+                        }, 10); // Adicionado setTimeout para garantir que a transição de opacidade ocorra corretamente
+                        dots[slideIndex - 1].className += " active";
+                        slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+                        // Auto slide
+                        setInterval(function () {
+                            plusSlides(1);
+                        }, 1000); // Change slide every 5 seconds
+                    }
+                </script>
+                <h1>
+                    <p style="padding-top: 5rem;">Produtos e Serviços</p>
+                </h1>
+                <h4>
+                    <p style="padding-top: 1rem; margin-left: 70px; margin-right: 70px; align-items: center;">
+                        Aqui você encontra nossos principais produtos e serviços:
+                    </p>
+                </h4>
+
+                <section class="produto" style="padding-top: 1rem;">
+                    <div>
+
+                        <h1>
+                            <p>Produtos</p>
+                        </h1>
+                        <br>
+                        <h4>
+                            <p>- Gel para Cabelo</p>
+                            <br>
+                            <p>- Pomada Modeladora</p>
+                            <br>
+                            <p>- Óleo para Barba</p>
+                            <br>
+                            <p>- Shampoo para Cabelos</p>
+                            <br>
+                            <p>- Condicionador Hidratante</p>
+                            <br>
+                        </h4>
+                    </div>
+
+                    <div>
+                        <h1>
+                            <p>Serviços</p>
+                        </h1>
+                        <br>
+                        <h4>
+                            <p>- Cortes de Cabelo</p>
+                            <br>
+                            <p>- Barbear Tradicional</p>
+                            <br>
+                            <p>- Tratamentos para Barba</p>
+                            <br>
+                            <p>- Coloração de Cabelo</p>
+                            <br>
+                            <p>-Vendas Online</p>
+                        </h4>
+                    </div>
+                </section>
+                <section>
+                    <br><br>
+                    <h4>
+                        <p style="margin-left: 70px; margin-right: 70px; align-items: center;">Na Barbearia Camisa 10,
+                            estamos comprometidos em oferecer produtos e serviços de qualidade, garantindo que cada
+                            cliente
+                            saia satisfeito e confiante. Agende seu horário hoje mesmo e descubra o que nos torna a
+                            escolha
+                            preferida para cuidados
+                            pessoais masculinos.</p>
+                        <h4>
+                </section>
+                <section class="botoes">
+                    <br>
+                    <a href=""><button class="buttonB">Visite nossa loja online</button></a>
+                    <br><br>
+                    <a href="https://raza589.gendo.app/#/"><button class="buttonB">Agende seu horário
+                            aqui</button></a>
+                </section>
+
+            </section>
+
+            <div class="pontilhado"></div>
+
+            <div class="pontilhado2">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.6195737069766!2d-49.1064525249471!3d-25.450979133721507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcf3b9c9a421d5%3A0x220e9b5856aa7654!2sCamisa%2010%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1722372169799!5m2!1spt-BR!2sbr"
+                    width="100%" height="345" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="torn-divider2"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="redes-sociais">
+                <h2>
+                    <p>- Redes Sociais -</p>
+                </h2>
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="..\Uploads\logoInstagram.jpeg" alt="Instagram" class="redes-sociais">
+                </a>
+                <!-- <p>@camisa10.barbearia_</p> -->
+            </div>
+            <div class="horario">
+                <h2>
+                    <p> - Horários - </p>
+                </h2>
+                <h5>
+                    <p>Terça à Sexta: 09h às 19h | Sábado 09:30h às 18h | Domingo e Segunda: Fechado</p>
+                </h5>
+            </div>
+            <div class="redes-sociais"> <!--class="contato"-->
+                <h2>
+                    <p>- Contato - </p>
+                </h2>
+                <!-- <p>Email: contato@camisa10.barbearia.com</p> -->
+                <!-- <p>Telefone: (99) 99999-9999</p> -->
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="https://t3.ftcdn.net/jpg/05/32/20/62/240_F_532206245_N1xYEHrZVIWU1ihamWwmDbh1gZWGU7Jl.jpg"
+                        alt="Instagram" class="redes-sociais">
+                </a>
+            </div>
+
+        </div>
+        <div class="direitos-autorais">
+            <p>&copy; 2024 - Luis Henrique Mota da Fonseca</p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

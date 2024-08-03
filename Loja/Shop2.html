@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewPORt" content="width=device-width, initial-scale=1.0">
+    <title>Camisa 10</title>
+    <!-- Pasta De Estilo -->
+    <link rel="stylesheet" href="/Loja/Estilos_Shop/Descktop_Shop.css">
+    <link rel="stylesheet" href="/Loja/Estilos_Shop/Papeis_Shop.css">
+    <link rel="stylesheet" href="/Estilos_Genericos/Botao.css">
+    <link rel="stylesheet" href="/Estilos_Genericos/Geral.css">
+    <link rel="stylesheet" href="/Loja/Estilos_Shop/Slider.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
+    <!-- Mapa -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <style>
+        .cslider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .slide img {
+            width: 100%;
+            border-radius: 50px;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+    </style>
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        // border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))'
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+				:root {
+					--background: 0 0% 100%;
+                    --foreground: 240 10% 3.9%;
+                    --card: 0 0% 100%;
+                    --card-foreground: 240 10% 3.9%;
+                    --popover: 0 0% 100%;
+                    --popover-foreground: 240 10% 3.9%;
+                    --primary: 240 5.9% 10%;
+                    --primary-foreground: 0 0% 98%;
+                    --secondary: 240 4.8% 95.9%;
+                    --secondary-foreground: 240 5.9% 10%;
+                    --muted: 240 4.8% 95.9%;
+                    --muted-foreground: 240 3.8% 46.1%;
+                    --accent: 240 4.8% 95.9%;
+                    --accent-foreground: 240 5.9% 10%;
+                    --destructive: 0 84.2% 60.2%;
+                    --destructive-foreground: 0 0% 98%;
+                    --border: 240 5.9% 90%;
+                    --input: 240 5.9% 90%;
+                    --ring: 240 5.9% 10%;
+                    --radius: 0.5rem;
+				}
+				.dark {
+					--background: 240 10% 3.9%;
+                    --foreground: 0 0% 98%;
+                    --card: 240 10% 3.9%;
+                    --card-foreground: 0 0% 98%;
+                    --popover: 240 10% 3.9%;
+                    --popover-foreground: 0 0% 98%;
+                    --primary: 0 0% 98%;
+                    --primary-foreground: 240 5.9% 10%;
+                    --secondary: 240 3.7% 15.9%;
+                    --secondary-foreground: 0 0% 98%;
+                    --muted: 240 3.7% 15.9%;
+                    --muted-foreground: 240 5% 64.9%;
+                    --accent: 240 3.7% 15.9%;
+                    --accent-foreground: 0 0% 98%;
+                    --destructive: 0 62.8% 30.6%;
+                    --destructive-foreground: 0 0% 98%;
+                    --border: 240 3.7% 15.9%;
+                    --input: 240 3.7% 15.9%;
+                    --ring: 240 4.9% 83.9%;
+				}
+			}
+		</style>
+</head>
+
+<body class="responD">
+
+    <header>
+        <!-- Seu cabeçalho aqui -->
+        <div class="container-logo">
+            <div><a href="apresentacao.html"><img src="..\Uploads\logoMenor.png" alt="marca" class="logo-imagem"></a>
+            </div>
+            
+        </div><!-- container-logo -->
+        <nav class="menu"><!-- Seu menu de navegação aqui -->
+            <ul class="ul-mobile">
+                <li><a href="../Apresentação/apresentacao.html" class="elemento1"style="border-bottom-width: 0px;">Quem Somos</a></li>
+                <!-- <li><a href="../Loja/shop.html" class="elemento1">Shop</a></li>
+                <li><a href="https://raza589.gendo.app/#/" class="elemento1">Agende seu horário</a></li> -->
+                <!-- <li><a href="login.html" class="elemento1"> login</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- class="sombra" -->
+        <section>
+            <section>
+                <div class="principal">
+                    <div class="slider-container">
+                        <div class="slider">
+                            <img src="../Uploads/Banner1.png" alt="Imagem 1" class="slide">
+                            <img src="../Uploads/Banner2.png" alt="Imagem 2" class="slide">
+                        </div>
+                        <div class="prev" onclick="plusSlides(-1)">&#10094;</div>
+                        <!-- Adicionado botão de seta para esquerda -->
+                        <div class="next" onclick="plusSlides(1)">&#10095;</div>
+                        <!-- Adicionado botão de seta para direita -->
+                        <div class="dots">
+                            <span class="dot" onclick="currentSlide(1)"></span>
+                            <span class="dot" onclick="currentSlide(2)"></span>
+                        </div>
+                    </div>
+                    <script src="../Scripts/script.js"></script>
+                    <section class="botoes">
+                        <br>
+                        <div class="content">
+                            <a href="#camisas"><button class="buttonP">Camisetas</button></a>
+                        </div>  
+                        <br><br>
+                        <a href="#Cabelo"><button class="buttonP">Cabelo</button></a>
+                        <br><br>
+                        <a href="https://raza589.gendo.app/#/reserve"><button class="buttonP">Serviços</button></a>
+                    </section>
+                </div>
+            </section>
+            <section >
+                <section class="pontilhado2">
+                    <div class="torn-divider-Shop"></div>
+                    <div class="container mx-auto p-4" style="position: relative; bottom: 120px;">
+                        <h2 class="text-3xl font-bold mb-6 text-primary" style="text-align: center;"id="camisas">Lançamentos</h2>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                                <div
+                                    class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                    <img src="https://619028l.ha.azioncdn.net/img/2024/05/produto/27100/d9630w-capa.jpg?ims=400x400"
+                                        alt="Kit Óleo e Balm para Barba Smaak Canela & Rum Embaixador"
+                                        class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                    <h3 class="text-lg font-semibold">Kit Óleo e Balm para Barba Smaak Canela &
+                                    </h3>
+                                    <div class="flex justify-between items-center mt-2">
+                                        <div>
+                                            <span class="text-red-500 line-through" style="font-size: 1.2em;">De: R$ 134,80</span>
+                                            <span class="text-green-500 font-bold block" style="font-size: 1.5em;">POR:  R$ 47,48 no PIX</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">2x de R$ 25,74 no cartão 3x juros</div>
+                                    <span
+                                        class="bg-black text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2">-63%</span>
+                                </div>
+                        </a>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div
+                                class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                <img src="https://619028l.ha.azioncdn.net/img/2024/03/produto/26907/smaak-canela.jpg?ims=400x400" alt="Tesoura Fio Navalha Titan A60 6.0 Polegadas"
+                                    class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                <h3 class="text-lg font-semibold">Tesoura Fio Navalha Titan A60 6.0 Polegadas</h3>
+                                </h3>
+                                <div class="flex justify-between items-center mt-2">
+                                    <div>
+                                        <span class="text-red-500 line-through" style="font-size: 1.2em;">De: R$ 399,99</span>
+                                        <span class="text-green-500 font-bold block"style="font-size: 1.5em;">POR: R$ 349,99 no PIX</span>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">4x de R$ 94,00 no cartão 3x juros</div>
+                                <span
+                                    class="bg-red-500 text-black text-xs rounded-full px-2 py-1 absolute top-2 right-2">-23%</span>
+                            </div>
+                        </a>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div
+                                class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                <img src="/Uploads/logo.png" alt="Pente de Madeira Meia Lua Brotherhood"
+                                    class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                <h3 class="text-lg font-semibold">Pente de Madeira Meia Lua Brotherhood</h3>
+                                <div class="flex justify-between items-center mt-2">
+                                    <div>
+                                        <span class="text-red-500 line-through" style="font-size: 1.2em;"> De: R$ 11,86</span>
+                                        <span class="text-green-500 font-bold block"style="font-size: 1.5em;">POR: R$ 9,99 no PIX</span>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-muted-foreground"style="font-size: 1.1em;">1x de R$ 10,42 no cartão 3x juros</div>
+                                <span
+                                    class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2">-13%</span>
+                            </div>
+                        </a>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div
+                                class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                <img src="/Uploads/logo.png" alt="Pente de Madeira Meia Lua Brotherhood"
+                                    class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                <h3 class="text-lg font-semibold">Pente de Madeira Meia Lua Brotherhood</h3>
+                                <div class="flex justify-between items-center mt-2">
+                                    <div>
+                                        <span class="text-red-500 line-through"style="font-size: 1.2em;">De: R$ 11,86</span>
+                                        <span class="text-green-500 font-bold block"style="font-size: 1.5em;">POR: R$ 9,99 no PIX</span>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">1x de R$ 10,42 no cartão 3x juros</div>
+                                <span
+                                    class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2">-13%</span>
+                            </div>
+                        </a>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div
+                                class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                <img src="/Uploads/logo.png" alt="Pente de Madeira Meia Lua Brotherhood"
+                                    class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                <h3 class="text-lg font-semibold">Pente de Madeira Meia Lua Brotherhood</h3>
+                                <div class="flex justify-between items-center mt-2">
+                                    <div>
+                                        <span class="text-red-500 line-through"style="font-size: 1.2em;">De: R$ 11,86</span>
+                                        <span class="text-green-500 font-bold block"style="font-size: 1.5em;">POR: R$ 9,99 no PIX</span>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">1x de R$ 10,42 no cartão 3x juros</div>
+                                <span
+                                    class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2">-13%</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!----------->
+                    <div class="container mx-auto p-1">
+                        <h2 class="text-3xl font-bold mb-6 text-primary" style="text-align: center;padding-top: 5rem;" id="Cabelo">Cabelo</h2>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                                <div
+                                    class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                    <img src="/Uploads/logo.png"
+                                        alt="Kit Óleo e Balm para Barba Smaak Canela & Rum Embaixador"
+                                        class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                    <h3 class="text-lg font-semibold">Kit Óleo e Balm para Barba Smaak Canela &
+                                    </h3>
+                                    <div class="flex justify-between items-center mt-2">
+                                        <div>
+                                            <span class="text-red-500 line-through"style="font-size: 1.2em;">De: R$ 134,80</span>
+                                            <span class="text-green-500 font-bold block"style="font-size: 1.5em;">POR: R$ 47,48 no PIX</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">2x de R$ 25,74 no cartão 3x juros</div>
+                                    <span
+                                        class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2">-63%</span>
+                                </div>
+                        </a>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div
+                                class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                <img src="/Uploads/logo.png" alt="Tesoura Fio Navalha Titan A60 6.0 Polegadas"
+                                    class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                <h3 class="text-lg font-semibold">Tesoura Fio Navalha Titan A60 6.0 Polegadas</h3>
+                                <div class="flex justify-between items-center mt-2">
+                                    <div>
+                                        <span class="text-red-500 line-through"style="font-size: 1.2em;">De: R$ 399,99</span>
+                                        <span class="text-green-500 font-bold block" style="font-size: 1.5em;">POR: R$ 349,99 no PIX</span>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">4x de R$ 94,00 no cartão 3x juros</div>
+                                <span
+                                    class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2">-23%</span>
+                            </div>
+                        </a>
+                        <a href="/Apresentação/apresentacao.html">
+                            <div
+                                class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                                <img src="/Uploads/logo.png" alt="Pente de Madeira Meia Lua Brotherhood"
+                                    class="w-full h-50 object-cover mb-2 rounded-lg" />
+                                <h3 class="text-lg font-semibold">Pente de Madeira Meia Lua Brotherhood</h3>
+                                <div class="flex justify-between items-center mt-2">
+                                    <div>
+                                        <span class="text-red-500 line-through" style="font-size: 1.2em;">De: R$ 11,86</span>
+                                        <span class="text-green-500 font-bold block" style="font-size: 1.5em;">POR: R$ 9,99 no PIX</span>
+                                    </div>
+                                </div>
+                                <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">1x de R$ 10,42 no cartão 3x juros</div>
+                                <span
+                                    class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2">-13%</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </section>
+
+        </section>
+
+        <div class="pontilhado"></div>
+        <div class="pontilhado2"></div>
+
+        <div class="pontilhado2">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.6195737069766!2d-49.1064525249471!3d-25.450979133721507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcf3b9c9a421d5%3A0x220e9b5856aa7654!2sCamisa%2010%20Barbearia!5e0!3m2!1spt-BR!2sbr!4v1722372169799!5m2!1spt-BR!2sbr"
+                width="100%" height="345" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="torn-divider2-Shop"></div>
+        </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="redes-sociais">
+                <h2>
+                    <p>- Redes Sociais -</p>
+                </h2>
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="..\Uploads\logoInstagram.jpeg" alt="Instagram" class="redes-sociais">
+                </a>
+                <!-- <p>@camisa10.barbearia_</p> -->
+            </div>
+            <div class="horario">
+                <h2>
+                    <p> - Horários - </p>
+                </h2>
+                <h5>
+                    <p>Terça à Sexta: 09h às 19h | Sábado 09:30h às 18h | Domingo e Segunda: Fechado</p>
+                </h5>
+            </div>
+            <div class="redes-sociais"> <!--class="contato"-->
+                <h2>
+                    <p>- Contato - </p>
+                </h2>
+                <!-- <p>Email: contato@camisa10.barbearia.com</p> -->
+                <!-- <p>Telefone: (99) 99999-9999</p> -->
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="https://t3.ftcdn.net/jpg/05/32/20/62/240_F_532206245_N1xYEHrZVIWU1ihamWwmDbh1gZWGU7Jl.jpg"
+                        alt="Instagram" class="redes-sociais">
+                </a>
+            </div>
+
+        </div>
+        <div class="direitos-autorais">
+            <p>&copy; 2024 - Luis Henrique Mota da Fonseca</p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

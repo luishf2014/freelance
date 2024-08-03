@@ -1,14 +1,5 @@
-/*Zerar a página*/
-* {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-/*---------------------------------------------------------------------------------------*/
 /*Mobile*/
-@media(max-width: 1023px) {
+/* @media(max-width: 480px) {
     body {
         font-size: 14px;
     }
@@ -97,8 +88,8 @@
     }
 
     main {
-        /* background-color: rgb(1, 88, 1); */
-        background-color: rgb(152, 152, 152); /* cinza claro*/  
+        background-color: rgb(1, 88, 1); comentado
+        background-color: rgb(152, 152, 152); cinza claro
         padding-top: 15px;
         padding-bottom: 15px;
     }
@@ -140,17 +131,17 @@
         transform: translateY(-50%);
         cursor: pointer;
         z-index: 1;
-        /* Adicionado para garantir que as setas fiquem acima das imagens */
+        Adicionado para garantir que as setas fiquem acima das imagens
     }
 
     .prev {
         left: 2%;
-        /* Distância do lado esquerdo */
+        Distancia do lado esquerdo
     }
 
     .next {
         right: 2%;
-        /* Distância do lado direito */
+        Distancia do lado direito 
     }
 
     .produto {
@@ -168,13 +159,13 @@
     .dot {
         width: 10px;
         height: 10px;
-    }
+    } 
 
-}
+} */
 
 /*---------------------------------------------------------------------------------------*/
 /*TABELTE*/
-@media (min-width: 1024px) {
+/* @media (min-width: 481px) {
     .container {
         width: 100%;
     }
@@ -198,7 +189,7 @@
     }
 
     .container-logo {
-        /* display: flex; */
+        display: flex;
         align-items: center;
         margin-left: 50px;
     }
@@ -233,7 +224,7 @@
 
     .elemento1 {
         margin-right: 50px;
-        /* Adiciona espaço à direita do elemento 1 */
+        Adiciona espaço á  direita do elemento 1
     }
 
     .desktop-nav {
@@ -273,16 +264,15 @@
         min-height: 500px;
         margin: auto;
         display: flex;
-        background-color: rgb(152, 152, 152); /* cinza claro*/  
-        /* background-color: rgb(37, 37, 37); */
-        /* background-color: rgb(1, 88, 1); */
+        background-color: rgb(152, 152, 152); cinza claro (comentado)  
+        background-color: rgb(37, 37, 37); comentado
+        background-color: rgb(1, 88, 1); comentado
         padding-top: 15px;
         padding-bottom: 15px;
     }
 
     .principal {
-        margin-left: 50px;
-        margin-right: 50px;
+        width: 100%;
 
     }
 
@@ -304,7 +294,8 @@
         margin-left: 70px;
         margin-right: 70px;
         width: 370px;
-        height: 380px;
+        height: auto;
+        float: left; -> Move a imagem para os lados
     }
 
     .produto {
@@ -334,17 +325,17 @@
         transform: translateY(-50%);
         cursor: pointer;
         z-index: 1;
-        /* Adicionado para garantir que as setas fiquem acima das imagens */
+        Adicionado para garantir que as setas fiquem acima das imagens
     }
 
     .prev {
         left: 10%;
-        /* Distância do lado esquerdo */
+        Distancia do lado esquerdo
     }
 
     .next {
         right: 10%;
-        /* Distância do lado direito */
+        Distancia do lado direito
     }
 
     .produto{
@@ -362,15 +353,16 @@
     .footer {
         width: 100%;
     }
-}
+} */
 
 /*---------------------------------------------------------------------------------------*/
 /*Descktop*/
-@media (min-width: 1728px) {
-    
+@media only screen and (min-width: 769px) {
+
     header {
         /* background-color: rgb(152, 152, 152); */
-        background-color: rgb(37, 37, 37);
+        /* background-color: rgb(37, 37, 37);Cinza */
+        /* background-color: black; */
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -380,11 +372,13 @@
     }
 
     .logo-imagem {
-        width: 100px;
-        height: 100px;
+        /* width: 100;
+        height: 1px; */
         background-color: white;
+        /* background-color: black; */
         border-radius: 50px;
         align-items: center;
+        background-size: contain;
     }
 
     .container-logo {
@@ -396,7 +390,7 @@
         display: flex;
         font-size: 1em;
         margin-left: 30px;
-        color: white;
+        color: black;
     }
 
     .menu li {
@@ -405,21 +399,35 @@
     }
 
     .menu li a {
-        font-size: 24px;
+        font-family: "Grenze", serif;
+        font-weight: 300;
+        font-size: 23px;
+        letter-spacing: 1px;
+        font-style: normal;
         text-decoration: none;
         color: white;
+        background-color: black;
         text-transform: uppercase;
-        padding: 10px 15px;
-        border-radius: 15px;
+        padding: 5px 20px;
+        border-radius: 100px;
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 1s ease;
+        /* Adiciona transição suave */
+        border-bottom-width: 1600px;
     }
 
     .menu li a:hover {
-        background-color: rgba(100, 100, 100, 0.5);
+        /* background-color: rgba(100, 100, 100, 0.082); */
+        color: black;
+        background-color: white;
+        transform: translateY(-5px);
+        /* Adiciona o efeito de flutuação */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        /* Adiciona a sombra */
     }
 
     .elemento1 {
         margin-right: 50px;
-        /* Adiciona espaço à direita do elemento 1 */
+        /* Adiciona espaÃ§o Ã  direita do elemento 1 */
     }
 
     .desktop-nav {
@@ -456,19 +464,52 @@
 
     main {
         width: 100%;
-        min-height: 500px;
-        margin: auto;
-        display: flex;
-        background-color: rgb(152, 152, 152); /* cinza claro*/  
+        /* min-height: 374vh; */
+        min-height: 389vh;
+        /* display: flex; */
+        background-color: rgb(152, 152, 152);
+        /* cinza claro*/
         /* background-color: rgb(37, 37, 37);  cinza escuro*/
         /* background-color: rgb(1, 88, 1);  verde */
-        padding-top: 15px;
-        padding-bottom: 15px;
+
+    }
+
+    /* Imagem de Fundo do Site */
+    .pontilhado {
+        background-image: url('/Uploads/bg-pontilhado.png');
+        background-size: cover;
+        /* Ajusta a imagem para cobrir toda a área */
+        background-position: center;
+        /* Centraliza a imagem */
+        background-repeat: no-repeat;
+        /* Impede a repetição da imagem */
+        height: 750px;
+    }
+
+    .pontilhado2 {
+        background-image: url('/Uploads/bg-pontilhado.png');
+        background-size: cover;
+        /* Ajusta a imagem para cobrir toda a área */
+        background-position: center;
+        /* Centraliza a imagem */
+        background-repeat: no-repeat;
+        /* Impede a repetição da imagem */
+        height: 450px;
     }
 
     .principal {
-        margin-left: 15rem;
-
+        padding-top: 5rem;
+        padding-bottom: 8rem;
+        /* background-color: red; */
+        background-color: black;
+        color: white;
+        font-family: "Grenze", serif;
+        font-weight: 300;
+        font-style: normal;
+        /* font-family: "Open Sans", sans-serif; */
+        font-size: 65px;
+        letter-spacing: -1px;
+        width: 100%;
     }
 
     .sombra {
@@ -483,46 +524,55 @@
         margin-right: 50px;
     }
 
-    .imag {
-        float: center;
-    }
-
     .imagem-apresentação {
-        margin-left: auto;
-        margin-right: auto;
-        width: 370px;
-        height: 380px;
+        margin-top: 12rem;
+        margin-left: 6rem;
+        margin-right: 4rem;
+        width: 450px;
+        height: auto;
+        float: left;
+        /* border: 2px solid black; */
     }
 
     .botoes {
+        padding-top: 60px;
+        padding-bottom: 60px;
         justify-content: center;
         display: flex;
         gap: 1rem;
     }
-    .produto{
+
+    .produto {
         display: flex;
         justify-content: center;
         gap: 10rem;
     }
-    
+
     .prev {
         left: 16%;
-        /* Distância do lado esquerdo */
+        /* Distancia do lado esquerdo */
     }
 
     .next {
         right: 16%;
-        /* Distância do lado direito */
+        /* Distancia do lado direito */
     }
-    
+
     .slide {
         width: 50%;
+        display: none;
+        height: auto;
+        margin: auto;
+        opacity: 0;
+        /* Adicionado */
+        transition: opacity 0.5s ease;
+        /* Adicionado */
     }
 
 }
 
 /*---------------------------------------------------------------------------------------*/
-/*Título*/
+/*Ti­tulo*/
 .titulo {
     background-color: #333;
     color: white;
@@ -530,30 +580,49 @@
 }
 
 /*----------------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------------*/
-/* Rodapé*/
 footer {
-    /* background-color: rgb(152, 152, 152); */
-    background-color: rgb(37, 37, 37);
+    background-color: black;
     color: white;
-    padding-top: 20px;
-    justify-content: center;
+    padding: 35px 0;
     width: 100%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+    /* padding-top: 111px; Adicionado para acomodar a altura da imagem rasgada */
 }
-.insta{
-    /* background-color: rgb(152, 152, 152); */
-    background-color: rgb(37, 37, 37);
-    color: white;
-    justify-content: center;
-    padding-bottom: 20px;
-}
-/*----------------------------------------------------------------------------------------*/
-/*Imagem Rodapé*/
 
-.redes-sociais {
-    flex: 1;
+.footer-container {
+    bottom: 111px;
+    font-family: "Grenze", serif;
+    font-weight: 300;
+    font-size: 23px;
+    display: flex;
+    /* Adicionando display flex */
+    flex-direction: row;
+    /* Inicialmente em coluna para dispositivos móveis */
+    justify-content: space-evenly;
+    gap: 20px;
 }
+
+.redes-sociais,
+.contato {
+    display: flex;
+    /* Adicionado display flex */
+    flex-direction: column;
+    /* Mantém os itens em coluna */
+    align-items: center;
+    /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+    /* Centraliza o texto */
+    margin-bottom: 20px;
+}
+
+.redes-sociais h2,
+.contato h2 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
 
 .redes-sociais a {
     margin: 0 10px;
@@ -561,24 +630,34 @@ footer {
 
 .redes-sociais img {
     width: 45px;
-    /* Defina a largura desejada para as imagens */
+    border-radius: 50px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.10s ease;
+    /* Adiciona transição suave */
 }
 
 .redes-sociais img:hover {
-    opacity: 60%;
+    /* opacity: 0.7; */
+    box-shadow: 0 3px 5px rgba(255, 255, 255, 0.601);
+    /* Sombra branca mais intensa no hover */
+    transform: translateY(-5px);
+    /* Eleva a imagem 5px no hover */
 }
 
-/*----------------------------------------------------------------------------------------*/
-/*Direitos Autorais*/
+.horario {
+    padding: 2rem;
+    font-size: 0.5em;
+}
+
 .direitos-autorais {
-    background-color: rgb(81, 81, 81);
-    color: white;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    padding: 5px;
-    align-items: center;
-    width: auto;
+    text-align: center;
 }
-.nome{
-    margin-top: 4px;
+
+.direitos-autorais p {
+    margin: 0;
+    font-size: 0.9em;
 }

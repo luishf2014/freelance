@@ -1,0 +1,95 @@
+
+
+.slider {
+    position: relative;
+    /* max-width: 75%; */
+    margin: auto;
+    overflow: hidden;
+    
+}
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    /* Ajusta a largura da imagem ao contêiner */
+    height: auto;
+    /* Mantém a proporção da imagem */
+    display: block;
+    /* Garante que a imagem seja exibida */
+}
+
+.prev,
+.next {
+    background-color: gray;
+    color: white;
+    padding: 15px 12px;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    border-radius: 5px;
+    position: absolute;
+    top: 25rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+    /* Adicionado para garantir que as setas fiquem acima das imagens */
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgb(241, 18, 18);
+}
+
+/* Seta lado Esquedo */
+.prev {
+    left: 1%;
+}
+
+/* Seta lado direito */
+.next {
+    right: 1%;
+}
+
+.dot-container {
+    text-align: center;
+    position: absolute;
+    /* bottom: 10px; */
+    width: 100%;
+}
+
+.dots {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    z-index: 1;
+    /* Adicionado para garantir que as bolinhas fiquem acima das imagens */
+    bottom: -4.5rem;
+}
+
+.dot {
+    display: inline-block;
+    width: 30px;
+    height: 4px;
+    margin: 0 1px;
+    background-color: rgb(129, 129, 129);
+
+    /* border: 1px solid rgb(116, 116, 116); */
+    /* border-radius: 50%; */
+}
+
+.dot.active {
+    background-color: #717171;
+}

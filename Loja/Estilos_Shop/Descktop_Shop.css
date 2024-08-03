@@ -1,0 +1,655 @@
+/*Mobile*/
+/* @media(max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .responD {
+        width: 100%;
+    }
+    header {
+        background-color: rgb(37, 37, 37);
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .logo-imagem {
+        margin-top: 15px;
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        border-radius: 50px;
+        align-items: center;
+    }
+
+    .logo-texto {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .imagem-apresentação {
+        margin-left: 70px;
+        margin-right: 70px;
+        width: 210px;
+        height: 250px;
+    }
+
+    .titulo {
+        background-color: #333;
+        color: white;
+    }
+
+    .mobile-nav {
+        display: block;
+        margin: 10px;
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+    }
+
+    nav.mobile-nav a {
+        display: inline;
+        margin: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        background-color: #444;
+        color: white;
+        text-decoration: none;
+        margin: 0;
+        display: block;
+        width: 100%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    nav a:hover {
+        background-color: rgb(100, 100, 100);
+        opacity: 75%;
+    }
+    .elemento1{
+        font-size: 20px;
+        
+    }
+    .ul-mobile{
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .imag {
+        align-items: center;
+        min-height: 250px;
+        min-width: 260px;
+    }
+
+    main {
+        background-color: rgb(1, 88, 1); comentado
+        background-color: rgb(152, 152, 152); cinza claro
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .principal {
+        margin-left: 25px;
+        margin-right: 25px;
+        align-items: center;
+        border-radius: 15px;
+        background-color: white;
+        padding: 10px;
+        padding-bottom: 10px;
+
+    }
+
+    .sombra {
+        border-radius: 10px;
+        box-shadow: 2px 0 10px 15px rgba(0, 0, 0.187, 0.187);
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .slide {
+        width: 70%;
+    }
+
+    .prev,
+    .next {
+        background-color: gray;
+        color: white;
+        padding: 3px 10px;
+        text-align: center;
+        font-size: 16px;
+        transition: 0.3s;
+        border-radius: 15px;
+        position: absolute;
+        top: 70%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 1;
+        Adicionado para garantir que as setas fiquem acima das imagens
+    }
+
+    .prev {
+        left: 2%;
+        Distancia do lado esquerdo
+    }
+
+    .next {
+        right: 2%;
+        Distancia do lado direito 
+    }
+
+    .produto {
+        padding-top: 10px;
+    }
+
+    .botoes {
+        align-items: center;
+    }
+
+    .footer {
+        width: 100%;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    } 
+
+} */
+
+/*---------------------------------------------------------------------------------------*/
+/*TABELTE*/
+/* @media (min-width: 481px) {
+    .container {
+        width: 100%;
+    }
+    header {
+        background-color: rgb(37, 37, 37);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        padding: 15px 0px;
+    }
+
+    .logo-imagem {
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        border-radius: 50px;
+        align-items: center;
+        margin-left: 35px;
+    }
+
+    .container-logo {
+        display: flex;
+        align-items: center;
+        margin-left: 50px;
+    }
+
+    .logo-texto {
+        padding-top: 10px;
+        font-size: 0.6em;
+        display: flex;
+        margin-left: 30px;
+        color: white;
+    }
+
+    .menu li {
+        display: inline-block;
+        margin: 0, 10px;
+        margin-left: 50px;
+    }
+
+    .menu li a {
+        
+        font-size: 24px;
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+
+    .menu li a:hover {
+        background-color: rgba(100, 100, 100, 0.5);
+    }
+
+    .elemento1 {
+        margin-right: 50px;
+        Adiciona espaço á  direita do elemento 1
+    }
+
+    .desktop-nav {
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        width: auto;
+        justify-content: space-around;
+        position: sticky;
+        top: 0;
+
+    }
+
+    nav.desktop-nav a {
+        display: inline;
+        margin: 10px;
+    }
+
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 2px;
+        display: block;
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+
+    nav a:hover {
+        background-color: rgb(100, 100, 100);
+        opacity: 75%;
+    }
+
+    main {
+        width: 100%;
+        min-height: 500px;
+        margin: auto;
+        display: flex;
+        background-color: rgb(152, 152, 152); cinza claro (comentado)  
+        background-color: rgb(37, 37, 37); comentado
+        background-color: rgb(1, 88, 1); comentado
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .principal {
+        width: 100%;
+
+    }
+
+    .sombra {
+        background-color: white;
+        width: 80%;
+        padding: 10px;
+        margin-left: 9%;
+        border-radius: 10px;
+        box-shadow: 2px 0 10px 5px rgba(0, 0, 0, 0.374);
+        
+    }
+
+    .imag {
+        float: center;
+    }
+
+    .imagem-apresentação {
+        margin-left: 70px;
+        margin-right: 70px;
+        width: 370px;
+        height: auto;
+        float: left; -> Move a imagem para os lados
+    }
+
+    .produto {
+        padding-top: 10px;
+        
+    }
+
+    .botoes {
+        align-items: center;
+    }
+
+    .slide {
+        width: 65%;
+    }
+
+    .prev,
+    .next {
+        background-color: gray;
+        color: white;
+        padding: 3px 10px;
+        text-align: center;
+        font-size: 16px;
+        transition: 0.3s;
+        border-radius: 15px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 1;
+        Adicionado para garantir que as setas fiquem acima das imagens
+    }
+
+    .prev {
+        left: 10%;
+        Distancia do lado esquerdo
+    }
+
+    .next {
+        right: 10%;
+        Distancia do lado direito
+    }
+
+    .produto{
+        display: flex;
+        justify-content: center;
+        gap: 10rem;
+    }
+
+    .botoes {
+        justify-content: center;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .footer {
+        width: 100%;
+    }
+} */
+
+/*---------------------------------------------------------------------------------------*/
+/*Descktop*/
+@media only screen and (min-width: 769px) {
+
+    header {
+        /* background-color: rgb(152, 152, 152); */
+        /* background-color: rgb(37, 37, 37);Cinza */
+        /* background-color: black; */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        padding: 10px 0px;
+    }
+
+    .logo-imagem {
+        /* width: 100;
+        height: 1px; */
+        background-color: white;
+        /* background-color: black; */
+        border-radius: 50px;
+        align-items: center;
+        background-size: contain;
+    }
+
+    .container-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-texto {
+        display: flex;
+        font-size: 1em;
+        margin-left: 30px;
+        color: black;
+    }
+
+    .menu li {
+        display: inline-block;
+        margin: 0, 10px;
+    }
+
+    .menu li a {
+        font-family: "Grenze", serif;
+        font-weight: 300;
+        font-size: 23px;
+        letter-spacing: 1px;
+        font-style: normal;
+        text-decoration: none;
+        color: white;
+        background-color: black;
+        text-transform: uppercase;
+        padding: 5px 20px;
+        border-radius: 100px;
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 1s ease;
+        /* Adiciona transição suave */
+        border-bottom-width: 1600px;
+    }
+
+    .menu li a:hover {
+        /* background-color: rgba(100, 100, 100, 0.082); */
+        color: black;
+        background-color: white;
+        transform: translateY(-5px);
+        /* Adiciona o efeito de flutuação */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        /* Adiciona a sombra */
+    }
+
+    .elemento1 {
+        margin-right: 50px;
+        /* Adiciona espaÃ§o Ã  direita do elemento 1 */
+        border-bottom-width: 0px;
+    }
+
+    .desktop-nav {
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        width: auto;
+        justify-content: space-around;
+        position: sticky;
+        top: 0;
+
+    }
+
+    nav.desktop-nav a {
+        display: inline;
+        margin: 10px;
+    }
+
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 10px;
+        display: block;
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+
+    nav a:hover {
+        background-color: rgb(100, 100, 100);
+        opacity: 75%;
+    }
+
+    main {
+        width: 100%;
+        /* min-height: 374vh; */
+        min-height: 389vh;
+        /* display: flex; */
+        background-color: rgb(152, 152, 152);
+        /* cinza claro*/
+        /* background-color: rgb(37, 37, 37);  cinza escuro*/
+        /* background-color: rgb(1, 88, 1);  verde */
+
+    }
+
+    /* Imagem de Fundo do Site */
+    .pontilhado {
+        background-image: url('/Uploads/bg-pontilhado.png');
+        background-size: cover;
+        /* Ajusta a imagem para cobrir toda a área */
+        background-position: center;
+        /* Centraliza a imagem */
+        background-repeat: no-repeat;
+        /* Impede a repetição da imagem */
+        height: 750px;
+    }
+
+    .pontilhado2 {
+        background-image: url('/Uploads/bg-pontilhado.png');
+        background-size: cover;
+        /* Ajusta a imagem para cobrir toda a área */
+        background-position: center;
+        /* Centraliza a imagem */
+        background-repeat: no-repeat;
+        /* Impede a repetição da imagem */
+        height: 450px;
+    }
+
+    .principal {
+        
+        /* background-color: red; */
+        background-color: black;
+        color: white;
+        font-family: "Grenze", serif;
+        font-weight: 300;
+        font-style: normal;
+        /* font-family: "Open Sans", sans-serif; */
+        font-size: 65px;
+        /* letter-spacing: -1px; */
+        /* width: 100%; */
+        min-height: 115vh;
+    }
+
+    .sombra {
+        background-color: white;
+        align-items: left;
+        width: 80%;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 0 10px 5px rgba(0, 0, 0, 0.374);
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .imagem-apresentação {
+        margin-top: 12rem;
+        margin-left: 6rem;
+        margin-right: 4rem;
+        width: 450px;
+        height: auto;
+        float: left;
+        /* border: 2px solid black; */
+    }
+
+    .botoes {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        justify-content: center;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .produto {
+        display: flex;
+        justify-content: center;
+        gap: 10rem;
+    }
+
+    .prev {
+        left: 10%;
+        /* Distancia do lado esquerdo */
+    }
+
+    .next {
+        right: 16%;
+        /* Distancia do lado direito */
+    }
+
+}
+
+/*---------------------------------------------------------------------------------------*/
+/*Ti­tulo*/
+.titulo {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+/*----------------------------------------------------------------------------------------*/
+footer {
+    background-color: black;
+    color: white;
+    padding: 35px 0;
+    width: 100%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+    /* padding-top: 111px; Adicionado para acomodar a altura da imagem rasgada */
+}
+
+.footer-container {
+    bottom: 111px;
+    font-family: "Grenze", serif;
+    font-weight: 300;
+    font-size: 23px;
+    display: flex;
+    /* Adicionando display flex */
+    flex-direction: row;
+    /* Inicialmente em coluna para dispositivos móveis */
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.redes-sociais,
+.contato {
+    display: flex;
+    /* Adicionado display flex */
+    flex-direction: column;
+    /* Mantém os itens em coluna */
+    align-items: center;
+    /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+    /* Centraliza o texto */
+    margin-bottom: 20px;
+}
+
+.redes-sociais h2,
+.contato h2 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+
+.redes-sociais a {
+    margin: 0 10px;
+}
+
+.redes-sociais img {
+    width: 45px;
+    border-radius: 50px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.10s ease;
+    /* Adiciona transição suave */
+}
+
+.redes-sociais img:hover {
+    /* opacity: 0.7; */
+    box-shadow: 0 3px 5px rgba(255, 255, 255, 0.601);
+    /* Sombra branca mais intensa no hover */
+    transform: translateY(-5px);
+    /* Eleva a imagem 5px no hover */
+}
+
+.horario {
+    padding: 2rem;
+    font-size: 1.1em;
+}
+
+.direitos-autorais {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.direitos-autorais p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+

@@ -466,9 +466,9 @@
     main {
         width: 100%;
         /* min-height: 374vh; */
-        min-height: 389vh;
+        max-height: 5000vh;
         /* display: flex; */
-        background-color: rgb(152, 152, 152);
+        background-color: gray;
         /* cinza claro*/
         /* background-color: rgb(37, 37, 37);  cinza escuro*/
         /* background-color: rgb(1, 88, 1);  verde */
@@ -495,11 +495,22 @@
         /* Centraliza a imagem */
         background-repeat: no-repeat;
         /* Impede a repetição da imagem */
+        height: 500px;
+    }
+
+    .pontilhado-map {
+        background-image: url('/Uploads/bg-pontilhado.png');
+        background-size: cover;
+        /* Ajusta a imagem para cobrir toda a área */
+        background-position: center;
+        /* Centraliza a imagem */
+        background-repeat: no-repeat;
+        /* Impede a repetição da imagem */
         height: 450px;
     }
 
     .principal {
-        
+
         /* background-color: red; */
         background-color: black;
         color: white;
@@ -510,7 +521,7 @@
         font-size: 65px;
         /* letter-spacing: -1px; */
         /* width: 100%; */
-        min-height: 115vh;
+        min-height: 100vh;
     }
 
     .sombra {
@@ -536,8 +547,8 @@
     }
 
     .botoes {
-        padding-top: 60px;
-        padding-bottom: 60px;
+        padding-top: 15px;
+        /* padding-bottom: 60px; */
         justify-content: center;
         display: flex;
         gap: 1rem;
@@ -549,15 +560,7 @@
         gap: 10rem;
     }
 
-    .prev {
-        left: 10%;
-        /* Distancia do lado esquerdo */
-    }
 
-    .next {
-        right: 16%;
-        /* Distancia do lado direito */
-    }
 
 }
 
@@ -573,7 +576,7 @@
 footer {
     background-color: black;
     color: white;
-    padding: 35px 0;
+    padding-top: 35px;
     width: 100%;
     text-align: center;
     font-family: Arial, sans-serif;
@@ -639,17 +642,21 @@ footer {
 }
 
 .direitos-autorais {
-    border-top: 1px solid #444;
-    padding-top: 10px;
+    padding-bottom: 10px;
     margin-top: 20px;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     text-align: center;
 }
+
+.direitos-autorais-linha {
+    width: 30%;
+    border: 1px solid gray;
+    margin: 0 auto;
+}
+
 
 .direitos-autorais p {
     margin: 0;
     font-size: 0.9em;
 }
-
-

@@ -558,15 +558,29 @@
         /* Distancia do lado direito */
     }
 
+
+    /* Carousel */
     .slide {
-        width: 50%;
-        display: none;
-        height: auto;
+        width: 100%;
+        /* display: none; */
+        height: 450px;
         margin: auto;
-        opacity: 0;
         /* Adicionado */
         transition: opacity 0.5s ease;
         /* Adicionado */
+    }
+    .carousel-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        max-width: 800px;
+        /* Ajuste conforme necessário */
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        height: auto;
     }
 
 }
@@ -583,7 +597,7 @@
 footer {
     background-color: black;
     color: white;
-    padding: 35px 0;
+    padding-top: 35px;
     width: 100%;
     text-align: center;
     font-family: Arial, sans-serif;
@@ -649,12 +663,17 @@ footer {
 }
 
 .direitos-autorais {
-    border-top: 1px solid #444;
-    padding-top: 10px;
+    padding-bottom: 10px;
     margin-top: 20px;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     text-align: center;
+}
+
+.direitos-autorais-linha {
+    width: 30%;
+    border: 1px solid gray;
+    margin: 0 auto;
 }
 
 .direitos-autorais p {

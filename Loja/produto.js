@@ -1,64 +1,92 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Obtém o parâmetro 'id' da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
+    // Carrega as informações dos produtos do JSON
+    fetch('../php/produtos.json')
+        .then(response => response.json())
+        .then(data => {
+            const produtos = data.produtos;
 
-    if (productId) {
-        // Atualiza os detalhes do produto com base no 'id'
-        updateProductDetails(productId);
-    }
+            // Atualiza os cards de produtos dinamicamente
+            updateProductCards(produtos);
+
+            // Obtém o parâmetro 'id' da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            if (productId) {
+                // Atualiza os detalhes do produto com base no 'id'
+                updateProductDetails(productId, produtos);
+            }
+        })
+        .catch(error => console.error('Erro ao carregar o JSON:', error));
 });
 
-function updateProductDetails(productId) {
-    // Dados fictícios para os produtos
-    const products = {
-        "1": {
-            name: "Kit Óleo e Balm para Barba Smaak Canela & Rum Embaixador",
-            currentPrice: "R$ 47,48",
-            previousPrice: "R$ 134,80",
-            description: "Aqui vai uma breve descrição do Kit Óleo e Balm.",
-            images: [
-                "https://619028l.ha.azioncdn.net/img/2024/05/produto/27100/d9630w-capa.jpg?ims=500x500",
-                "/Uploads/logo.png",
-                "https://619028l.ha.azioncdn.net/img/2024/05/produto/27100/d9630w-capa.jpg?ims=500x500",
-                "/Uploads/logo.png"
-            ],
-            descriptionComplete: "Em breve um descrição completa"
-        },
-        "2": {
-            name: "Tesoura Fio Navalha Titan A60 6.0 Polegadas",
-            currentPrice: "R$ 349,99",
-            // previousPrice: "R$ 399,99",
-            description: "Aqui vai uma breve descrição da Tesoura Fio Navalha.",
-            images: [
-                "https://619028l.ha.azioncdn.net/img/2024/03/produto/26907/smaak-canela.jpg?ims=500x500",
-                "https://example.com/imagem2.jpg",
-                "https://example.com/imagem3.jpg",
-                "https://example.com/imagem4.jpg"
-            ],
-            descriptionComplete: "Em breve um descrição completa"
+function updateProductCards(produtos) {
+    const container = document.querySelector('.grid.grid-cols-1');
+
+    produtos.forEach(produto => {
+        let cardHTML = '';
+
+        // Verifica se o produto tem preço anterior
+        if (produto.precoAnterior) {
+            cardHTML = `
+                <a href="produto.html?id=${produto.id}">
+                    <div class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                        <img src="${produto.imagemPrincipal}" alt="${produto.nome}" class="w-full h-50 object-cover mb-2 rounded-lg" />
+                        <h3 class="text-lg font-semibold">${produto.nome}</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <div>
+                                <span class="text-red-500 line-through" style="font-size: 1.2em;">De: R$ ${produto.precoAnterior}</span>
+                                <span class="text-green-500 font-bold block" style="font-size: 1.5em;">POR: R$ ${produto.precoAtual} no PIX</span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">2x de R$ ${parseFloat(produto.precoAtual / 2).toFixed(2)} no cartão 3x juros</div>
+                        <span class="bg-black text-white text-xs rounded-full px-2 py-1 absolute top-2 right-2" style="font-size: 1.1em;">-${produto.desconto}</span>
+                    </div>
+                </a>
+            `;
+        } else {
+            cardHTML = `
+                <a href="produto.html?id=${produto.id}">
+                    <div class="border rounded-lg p-4 bg-card shadow-lg transition-transform transform hover:scale-105">
+                        <img src="${produto.imagemPrincipal}" alt="${produto.nome}" class="w-full h-50 object-cover mb-2 rounded-lg" />
+                        <h3 class="text-lg font-semibold">${produto.nome}</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-green-500 font-bold block" style="font-size: 1.5em;">POR: R$ ${produto.precoAtual} no PIX</span>
+                        </div>
+                        <div class="text-sm text-muted-foreground" style="font-size: 1.1em;">2x de R$ ${parseFloat(produto.precoAtual / 2).toFixed(2)} no cartão 3x juros</div>
+                    </div>
+                </a>
+            `;
         }
-    };
 
-    const product = products[productId];
+        // Adiciona o card ao container
+        container.innerHTML += cardHTML;
+    });
+}
 
-    if (product) {
-        document.getElementById('productName').textContent = product.name;
-        document.getElementById('currentPrice').textContent = product.currentPrice;
-        document.getElementById('previousPrice').textContent = product.previousPrice;
-        document.getElementById('productDescription').textContent = product.description;
-        document.getElementById('descriptionComplete').textContent = product.descriptionComplete;
+function updateProductDetails(productId, produtos) {
+    const produto = produtos.find(produto => produto.id == productId);
 
-        // Atualiza as imagens do carrossel e miniaturas
+    if (produto) {
+        // Atualiza os detalhes do produto na página de descrição
+        document.getElementById('productName').textContent = produto.nome;
+        document.getElementById('currentPrice').textContent = produto.precoAtual;
+        document.getElementById('previousPrice').textContent = produto.precoAnterior;
+        document.getElementById('productDescription').textContent = produto.descricao;
+        document.getElementById('descriptionComplete').textContent = produto.descricaoCompleta;
+
+        // Atualiza a imagem principal e as miniaturas
         const mainImage = document.getElementById('mainImage');
         const thumbnails = document.querySelectorAll('.thumbnail-images img');
 
-        product.images.forEach((imageUrl, index) => {
-            thumbnails[index].src = imageUrl;
-            thumbnails[index].onclick = () => selectImage(index);
+        // Define a imagem principal
+        mainImage.src = produto.imagens[0];
 
-            if (index === 0) {
-                mainImage.src = imageUrl;
+        // Atualiza as imagens das miniaturas
+        produto.imagens.slice(1).forEach((imageUrl, index) => {
+            if (index < thumbnails.length) {
+                thumbnails[index].src = imageUrl;
+                thumbnails[index].onclick = () => selectImage(index + 1);
             }
         });
 

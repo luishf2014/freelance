@@ -153,6 +153,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            background-color: #fff;
         }
 
         .product-description h2 {
@@ -182,7 +183,7 @@
             color: #555;
         }
     </style>
-    <link rel="stylesheet" href="/Loja/Estilos_Shop/Descktop_Shop.css">
+    <!-- <link rel="stylesheet" href="/Loja/Estilos_Shop/Descktop_Shop.css"> -->
     <link rel="stylesheet" href="/Estilos_Genericos/Botao.css">
     <link rel="stylesheet" href="/Estilos_Genericos/Geral.css">
 </head>
@@ -191,7 +192,8 @@
     <header style="background-color: black;">
         <!-- Seu cabeçalho aqui -->
         <div class="container-logo">
-            <div><a href="home.html"><img src="../Uploads/logoMenorBrancaSemFundo.png" alt="marca" class="logo-imagem" style="background-color: black;"></a>
+            <div><a href="home.html"><img src="/Uploads/logoMenorBrancaSemFundo.png" alt="marca" class="logo-imagem"
+                        style="background-color: black;"></a>
             </div>
             <!-- <div class="logo-texto">
                 <h3>
@@ -201,48 +203,158 @@
         </div><!-- container-logo -->
         <nav class="menu"><!-- Seu menu de navegação aqui -->
             <ul class="ul-mobile">
-                <li><a href="../Apresentação/home.html" class="elemento1" style="border-bottom-width: 0px;">Quem Somos</a></li> <!--Quem Somos -->
-                <li><a href="../Loja/shop2.html" class="elemento1" style="border-bottom-width: 0px;">Shop2</a></li>
-                <li><a href="https://raza589.gendo.app/#/" class="elemento1" style="border-bottom-width: 0px;">Agende seu horário</a></li>
+                <li><a href="home.html" class="elemento1" style="border-bottom-width: 0px;">Quem Somos</a></li>
+                <!--Quem Somos -->
+                <li><a href="Shop2.html" class="ButtonB" style="border-bottom-width: 0px;">Shop2</a></li>
+                <li><a href="https://raza589.gendo.app/#/" class="buttonP">Agende
+                        seu horário</a></li>
                 <!-- <li><a href="login.html" class="elemento1"> login</a></li> -->
             </ul>
         </nav>
     </header>
+    <?php
+    require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php'; // Ajuste o caminho conforme necessário
+
+    $id = $_GET['id'];
+
+    // Busque o produto
+    $query = "SELECT p.id, p.nome, p.marca, p.precoAtual, p.precoAnterior, p.porcentagemDesconto, p.descricaoCompleta, p.parcelas, p.categoria_id, c.nome AS categoria_nome
+    FROM produtos p
+    JOIN categorias c ON p.categoria_id = c.id
+    WHERE p.id = ?";
+    $stmt = $banco->prepare($query);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $product = $result->fetch_assoc();
+    } else {
+        echo "<p>Produto não encontrado.</p>";
+        exit;
+    }
+    ?>
     <div class="product-container">
         <div class="product-images">
             <div class="thumbnail-images">
-                <!-- As imagens serão atualizadas pelo JavaScript -->
-                <img src="" alt="Imagem 1" class="active">
-                <img src="" alt="Imagem 2">
-                <img src="" alt="Imagem 3">
-                <img src="" alt="Imagem 4">
+                <img src="" alt="" class="active"> <!-- Miniatura 1 -->
+                <img src="" alt=""> <!-- Miniatura 2 -->
+                <img src="" alt=""> <!-- Miniatura 3 -->
+                <img src="" alt=""> <!-- Miniatura 4 -->
             </div>
             <div class="carousel">
                 <button class="carousel-arrow prev" onclick="changeSlide(-1)">&#10094;</button>
-                <img id="mainImage" src="" alt="Imagem Principal do Produto">
+                <img id="mainImage" src="" alt="">
                 <button class="carousel-arrow next" onclick="changeSlide(1)">&#10095;</button>
             </div>
         </div>
 
         <div class="product-details">
             <h1 id="productName">Nome do Produto</h1>
-            <p class="price"><span id="currentPrice">PRECO_ATUAL</span> <span class="discount"><span id="previousPrice">PRECO_ANTERIOR</span></span></p>
-            <p class="description" id="productDescription">
-                Breve descrição do produto, destacando suas características principais.
-            </p>
-            <button class="buy-now">Comprar Agora</button>
+            <p class="price"><span id="currentPrice">PRECO_ATUAL</span> <span class="discount"><span
+                        id="previousPrice">PRECO_ANTERIOR</span></span></p>
+            <p class="description" id="productDescription">Breve descrição do produto, destacando suas características
+                principais.</p>
+            <button class="buttonB">Comprar Agora</button>
         </div>
     </div>
 
     <div class="product-description">
         <h2>Descrição Detalhada</h2>
-        <p class="description" id="descriptionComplete">
-            Esta seção contém uma descrição mais detalhada do produto. Inclua informações técnicas, material, cuidados necessários e outros detalhes importantes.
-        </p>
+        <div id="conteudo"></div>
+        <script>
+            // Função para formatar o texto
+            function formatarTexto(texto) {
+                const linhas = texto.split('\n');
+                let textoFormatado = '';
+
+                linhas.forEach((linha) => {
+                    if (linha.startsWith('# ')) {
+                        textoFormatado += `<h1>${linha.substring(2).trim()}</h1>`;
+                    } else if (linha.startsWith('## ')) {
+                        textoFormatado += `<h2>${linha.substring(3).trim()}</h2>`;
+                    } else if (linha.startsWith('### ')) {
+                        textoFormatado += `<h3>${linha.substring(4).trim()}</h3>`;
+                    } else if (linha.trim() === '') {
+                        textoFormatado += '<br>';
+                    } else {
+                        textoFormatado += `<p>${linha.trim()}</p>`;
+                    }
+                });
+
+                return textoFormatado;
+            }
+
+            // Função para mostrar o texto formatado
+            function mostrarTextoFormatado(texto) {
+                const conteudo = document.getElementById('conteudo');
+                conteudo.innerHTML = formatarTexto(texto);
+            }
+
+            // PHP para buscar e passar o texto formatado
+            <?php
+            require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php';
+
+            // Consulta SQL
+            $busca = "SELECT descricaoCompleta FROM produtos WHERE id = 5";
+            $result = $banco->query($busca);
+
+            if ($result->num_rows > 0) {
+                // Buscar o texto
+                $row = $result->fetch_assoc();
+                $texto = $row['descricaoCompleta'];
+            } else {
+                $texto = ''; // Caso não haja texto
+            }
+            ?>
+            // Passa o texto recuperado do PHP para o JavaScript
+            const texto = <?php echo json_encode($texto); ?>;
+            mostrarTextoFormatado(texto); // Chama a função do Formatador.js
+        </script>
     </div>
+
+
 
     <!-- Importa o arquivo JavaScript externo -->
     <script src="../Loja/produto.js"></script>
+    <footer>
+        <div class="footer-container">
+            <div class="redes-sociais">
+                <h2>
+                    <p>- Redes Sociais -</p>
+                </h2>
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="..\Uploads\logoInstagram.jpeg" alt="Instagram" class="redes-sociais">
+                </a>
+                <!-- <p>@camisa10.barbearia_</p> -->
+            </div>
+            <div class="horario">
+                <h2>
+                    <p> - Horários - </p>
+                </h2>
+                <h5>
+                    <p>Terça à Sexta: 09h às 19h | Sábado 09:30h às 18h | Domingo e Segunda: Fechado</p>
+                </h5>
+            </div>
+            <div class="redes-sociais"> <!--class="contato"-->
+                <h2>
+                    <p>- Contato - </p>
+                </h2>
+                <!-- <p>Email: contato@camisa10.barbearia.com</p> -->
+                <!-- <p>Telefone: (99) 99999-9999</p> -->
+                <a href="https://www.instagram.com/camisa10.barbearia_/">
+                    <img src="https://t3.ftcdn.net/jpg/05/32/20/62/240_F_532206245_N1xYEHrZVIWU1ihamWwmDbh1gZWGU7Jl.jpg"
+                        alt="Instagram" class="redes-sociais">
+                </a>
+            </div>
+
+        </div>
+        <div class="direitos-autorais">
+            <div class="direitos-autorais-linha"></div>
+            <p>&copy; 2024 - Luis Henrique Mota da Fonseca. Todos os direitos reservados.</p>
+        </div>
+
+    </footer>
 </body>
 
 </html>

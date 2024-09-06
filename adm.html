@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            width: 100%;
+            background: white;
+        }
+
+        .logo-imagem {
+            border-radius: 50px;
+            background-size: contain;
+        }
+
+        .container-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-texto {
+            display: flex;
+            font-size: 1em;
+            margin-left: 30px;
+            color: black;
+        }
+
+        .menu li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .menu li a {
+            font-family: "Grenze", serif;
+            font-weight: 300;
+            font-size: 23px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: white;
+            background-color: black;
+            text-transform: uppercase;
+            padding: 5px 20px;
+            border-radius: 100px;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 1s ease;
+        }
+
+        .menu li a:hover {
+            color: black;
+            background-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px; /* Ajusta a margem para deixar o painel um pouco abaixo do cabeçalho */
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .actions a {
+            display: block;
+            width: 200px;
+            height: 120px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 120px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .actions a:hover {
+            transform: translateY(-5px);
+        }
+
+        .actions a:active {
+            transform: translateY(0);
+        }
+
+        .actions a:nth-child(1) {
+            background-color: #28a745;
+        }
+
+        .actions a:nth-child(2) {
+            background-color: #ffc107;
+        }
+
+        .actions a:nth-child(3) {
+            background-color: #dc3545;
+        }
+        
+        .actions a.view-products {
+            background-color: #007bff; /* Azul */
+            color: #fff;
+        }
+
+        .actions a.view-products:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container-logo">
+            <div><a href="home.html"><img src="../teste/Uploads/logoMenor.png" alt="marca" class="logo-imagem"></a></div>
+        </div><!-- container-logo -->
+        <nav class="menu">
+            <ul class="ul-mobile">
+                <li><a href="adm.html" class="elemento1" style="border-bottom-width: 0px;">Painel</a></li>
+                <li><a href="Shop2.html" class="elemento1" style="border-bottom-width: 0px;">Shop2</a></li>
+                <li><a href="https://raza589.gendo.app/#/" class="elemento1" style="border-bottom-width: 0px;">Agende seu horário</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-content">
+        <div class="container">
+            <h1>Painel de Administração</h1>
+            <div class="actions">
+                <a href="AdicionarItens.php">Adicionar Item</a>
+                <!-- <a href="ListaEditar.php">Editar Item</a>
+                <a href="RemoverProduto.html">Remover Item</a> -->
+                <a href="ListaEditar.php" class="view-products">Todos os Produtos</a> <!-- Novo botão -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

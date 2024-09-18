@@ -263,7 +263,7 @@
             <ul class="ul-mobile">
                 <li><a href="adm.html">Painel</a></li>
                 <Li><a href="AdicionarItens.php">Adicionar</a></Li
-            </ul>
+                    </ul>
         </nav>
     </header>
 
@@ -372,8 +372,8 @@
                 var id = this.getAttribute('data-id');
                 var nome = this.getAttribute('data-nome');
                 var marca = this.getAttribute('data-marca');
-                var precoAtual = this.getAttribute('data-precoAtual');
-                var precoAnterior = this.getAttribute('data-precoAnterior');
+                var precoAtual = parseFloat(this.getAttribute('data-precoAtual'));
+                var precoAnterior = parseFloat(this.getAttribute('data-precoAnterior'));
                 var parcelas = this.getAttribute('data-parcelas');
 
                 // Referências ao pop-up e conteúdo do pop-up
@@ -382,14 +382,29 @@
 
                 // Atualizar título e conteúdo do pop-up para a remoção
                 document.getElementById('popupTitle').textContent = 'Remover Produto';
-                popupContent.innerHTML = `
-            <p><strong>ID:</strong> ${id}</p>
-            <p><strong>Nome:</strong> ${nome}</p>
-            <p><strong>Marca:</strong> ${marca}</p>
-            <p><strong>Preço Atual:</strong> R$ ${parseFloat(precoAtual).toFixed(2).replace('.', ',')}</p>
-            <p><strong>Preço Anterior:</strong> R$ ${parseFloat(precoAnterior).toFixed(2).replace('.', ',')}</p>
-            <p><strong>Parcelas:</strong> ${parcelas}</p>
-        `;
+
+                // Construir o conteúdo do pop-up
+                var contentHTML = `
+                    <p><strong>ID:</strong> ${id}</p>
+                    <p><strong>Nome:</strong> ${nome}</p>
+                    <p><strong>Marca:</strong> ${marca}</p>
+                    <p><strong>Preço Atual:</strong> R$ ${precoAtual.toFixed(2).replace('.', ',')}</p>`;
+
+                // Verificar se existe um preço anterior válido e calcular o desconto
+                if (precoAnterior > 0) {
+                    contentHTML += `<p><strong>Preço Anterior:</strong> R$ ${precoAnterior.toFixed(2).replace('.', ',')}</p>`;
+
+                    // Calcular o desconto
+                    var desconto = Math.round(((precoAnterior - precoAtual) / precoAnterior) * 100);
+                    contentHTML += `<p><strong>Desconto:</strong> ${desconto}%</p>`;
+                } else {
+                    contentHTML += `<p><strong>Desconto:</strong> Sem desconto</p>`;
+                }
+
+                contentHTML += `<p><strong>Parcelas:</strong> ${parcelas}</p>`;
+
+                // Inserir o conteúdo construído no pop-up
+                popupContent.innerHTML = contentHTML;
 
                 // Configurar botões de confirmação e cancelamento
                 document.getElementById('confirmButton').style.display = 'inline-block';

@@ -296,7 +296,7 @@
             require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php';
 
             // Consulta SQL
-            $busca = "SELECT descricaoCompleta FROM produtos WHERE id = 5";
+            $busca = "SELECT descricaoCompleta FROM produtos WHERE id ";
             $result = $banco->query($busca);
 
             if ($result->num_rows > 0) {

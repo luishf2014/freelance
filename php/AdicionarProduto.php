@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precoAnterior = isset($_POST['precoAnterior']) ? floatval($_POST['precoAnterior']) : null;
     $porcentagemDesconto = isset($_POST['porcentagem']) ? floatval($_POST['porcentagem']) : null;
     $descricaoCompleta = $banco->real_escape_string(trim($_POST['descricaoCompleta']));
-    $parcelas = intval($_POST['parcelas']);
+    $parcelas = $_POST['parcelas'];
     $categoria_id = intval($_POST['categoria_id']);
 
     // Validações adicionais
-    if($precoAtual <= 0 ){
+    if ($precoAtual <= 0) {
         die("Preço atual deve ser um valor positivo.");
     }
     if ($precoAnterior != null && $precoAnterior <= 0) {
@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $response['status'] = 'success';
         $response['message'] = 'Produto adicionado com sucesso';
+
     } else {
         $response['message'] = 'Erro: ' . $stmt->error;
     }
@@ -66,6 +67,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
 }
 $banco->close();
-header('Content-type : application/json');
 echo json_encode($response);
-?>

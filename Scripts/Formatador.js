@@ -1,3 +1,30 @@
+// Função para adicionar estilos CSS
+function adicionarEstilos() {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        h1,
+        h2,
+        h3 {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        br {
+            display: block;
+            content: "";
+            margin: 25px 0;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Chame a função ao carregar o script
+adicionarEstilos();
+
 // Função para formatar o texto
 function formatarTexto(texto) {
     const linhas = texto.split('\n');

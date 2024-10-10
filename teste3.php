@@ -6,15 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto - Nome do Produto</title>
     <style>
-        /* Estilo geral */
-        /* body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        } */
-
+        
         /* Container do produto */
         .product-container {
             display: flex;
@@ -23,7 +15,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 1px 50px rgba(0, 0, 0, 0.2);
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
             margin-top: 2rem;
         }
@@ -96,71 +88,149 @@
             border-color: #007bff;
         }
 
+
         /* Detalhes do produto */
         .product-details {
             flex: 1;
+            padding: 20px 50px;
+            border-radius: 8px;
+            background-color: #fff;
         }
 
+
         .product-details h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 26px;
+            /* Tamanho do título ajustado */
+            margin: 10px 0;
+            /* Margens ajustadas */
             color: #222;
-            margin-top: 25px;
+            /* Cor escura */
         }
 
         .product-details .price {
-            font-size: 32px;
-            color: green;
+            font-size: 28px;
+            /* Tamanho do preço */
+            color: #000;
+            /* Preto */
             font-weight: bold;
-            margin-bottom: 15px;
+            color: green;
+            display: flex;
+            /* justify-content: space-around; */
+        }
+
+        .product-details .price2 {
+            font-size: 20px;
+            /* Tamanho do preço */
+            color: #000;
+            /* Preto */
+            font-weight: bold;
+            margin-left: 27px;
+
         }
 
         .product-details .discount {
-            font-size: 20px;
+            font-size: 18px;
+            /* Tamanho da descrição do desconto */
             text-decoration: line-through;
-            color: red;
-            margin-left: 15px;
+            color: #999;
+            /* Cinza claro */
+            margin-left: 10px;
+            /* Margem esquerda */
         }
 
         .product-details .description {
             margin: 20px 0;
-            line-height: 1.8;
-            color: #555;
-            font-size: 18px;
+            line-height: 1.6;
+            /* Altura da linha ajustada */
+            color: #333;
+            /* Cinza escuro */
+            font-size: 16px;
+            /* Tamanho da descrição */
         }
 
         .product-details .buy-now {
-            background-color: #007bff;
+            background-color: #000;
+            /* Fundo preto */
             color: #fff;
-            padding: 12px 25px;
+            /* Texto branco */
+            padding: 10px 20px;
+            /* Padding ajustado */
             border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
+            /* Tamanho do texto do botão */
             border-radius: 5px;
+            /* Bordas arredondadas */
             transition: background-color 0.3s, transform 0.2s;
+            /* Transição suave */
+            text-transform: uppercase;
+            /* Letras maiúsculas */
+            
         }
 
         .product-details .buy-now:hover {
-            background-color: #0056b3;
+            background-color: #333;
+            /* Cinza escuro ao passar o mouse */
             transform: translateY(-2px);
+            /* Efeito de elevação */
+        }
+
+        .price-installments {
+            font-size: 16px;
+            /* Tamanho da descrição das parcelas */
+            color: #555;
+            /* Cinza médio */
+            margin-left: 100px;
+
+        }
+
+        .previousPrice {
+            margin-left: 27px;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #999
+        }
+
+        .msg-obs {
+            font-size: 15px;
+            color: #555;
+            margin-top: 20px;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-bottom: 20px;
+        }
+        .msg-obs .p{
+            text-align: left;
+        }
+
+        /* Porcentagem desconto */
+        .desconto-label {
+            background-color: red;
+            color: white;
+            padding: 3px 5px;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-size: 17px;
         }
 
         /* Descrição detalhada do produto */
         .product-description {
-            margin-top: 50px;
+            margin: 50px auto;
             padding: 30px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             background-color: #fff;
+            max-width: 1250px;
         }
 
         .product-description h2 {
             font-size: 24px;
             margin-bottom: 20px;
             color: #444;
-            border-bottom: 2px solid #007bff;
+            /* border-bottom: 2px solid #007bff; Azul */
+            border-bottom: 2px solid #000;
             padding-bottom: 10px;
         }
 
@@ -183,9 +253,9 @@
             color: #555;
         }
     </style>
-    <!-- <link rel="stylesheet" href="/Loja/Estilos_Shop/Descktop_Shop.css"> -->
-    <link rel="stylesheet" href="/Estilos_Genericos/Botao.css">
-    <link rel="stylesheet" href="/Estilos_Genericos/Geral.css">
+    <link rel="stylesheet" href="Loja/Estilos_Shop/Descktop_Shop.css">
+    <link rel="stylesheet" href="Estilos_Genericos/Botao.css">
+    <link rel="stylesheet" href="Estilos_Genericos/Geral.css">
 </head>
 
 <body>
@@ -248,70 +318,81 @@
                 <button class="carousel-arrow next" onclick="changeSlide(1)">&#10095;</button>
             </div>
         </div>
-
         <div class="product-details">
-            <h1 id="productName">Nome do Produto</h1>
-            <p class="price"><span id="currentPrice">PRECO_ATUAL</span> <span class="discount"><span
-                        id="previousPrice">PRECO_ANTERIOR</span></span></p>
-            <p class="description" id="productDescription">Breve descrição do produto, destacando suas características
-                principais.</p>
-            <button class="buttonB">Comprar Agora</button>
+            <h1 id="productName">
+                <?php echo htmlspecialchars($product['nome']); ?>
+            </h1>
+
+            <?php if (isset($product['precoAnterior']) && $product['precoAnterior'] > 0): ?>
+                <div class="previousPrice">
+                    de <span style="color: red; font-weight: bold; text-decoration: line-through;">R$ <?php echo number_format($product['precoAnterior'], 2, ',', '.'); ?></span> por
+                </div>
+            <?php endif; ?>
+
+            <div class="price">
+                <div>
+                    <img src="https://public-resources.zordcdn.com.br/assets/global/common-icons/payment-icons/icon-pix.svg" style="color:#000" alt="imagem pix">
+                    <span id="currentPrice">R$ <?php echo number_format($product['precoAtual'], 2, ',', '.'); ?></span>
+
+                    <?php if (isset($product['precoAnterior']) && $product['precoAnterior'] > 0): ?>
+                        <span class="desconto-label">
+                            -<?php echo round($product['porcentagemDesconto'], 2); ?>%
+                        </span>
+                    <?php endif; ?>
+                    <div class="price2">
+                        <span class="price-info" style="color: #555;">no PIX</span>
+                    </div>
+                </div>
+
+                <div class="price-installments">
+                    <div style="font-size: 28px;">
+                        <img src="https://public-resources.zordcdn.com.br/assets/global/common-icons/payment-icons/icon-pix.svg" style="color:#000" alt="imagem pix">
+                        R$ <?php echo number_format($product['precoAtual'], 2, ',', '.'); ?>
+                    </div>
+
+                    <section style="margin-left: 27px;">
+                        <div>
+                            no cartão em até <?php echo intval($product['parcelas']); ?>x
+                        </div>
+                        <div>
+                            de R$
+                            <strong>
+
+                                <?php
+                                // Evitar divisão por zero
+                                $parcelas = max(intval($product['parcelas']), 1);
+                                echo number_format($product['precoAtual'] / $parcelas, 2, ',', '.');
+                                ?> </strong> sem juros
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <button class="buy-now">Comprar Agora</button>
+            <div class="msg-obs">
+                <div style="text-align: center;">
+                    <strong >
+                        Observações:
+                    </strong>
+                </div>
+                <p class="p">* Caro cliente, o prazo de entrega começará a contar a partir do momento que a encomenda for despachada pela loja.</p>
+                <p class="p">* Devido as transportadoras não realizarem entregas em zonas rurais, de risco ou de difícil acesso, favor informar CEP específico de sua rua para o resultado correto</p>
+            </div>
+
+            
         </div>
+
     </div>
 
     <div class="product-description">
         <h2>Descrição Detalhada</h2>
         <div id="conteudo"></div>
+        <script src="/_aProjeto/teste/Scripts/Formatador.js"></script>
         <script>
-            // Função para formatar o texto
-            function formatarTexto(texto) {
-                const linhas = texto.split('\n');
-                let textoFormatado = '';
-
-                linhas.forEach((linha) => {
-                    if (linha.startsWith('# ')) {
-                        textoFormatado += `<h1>${linha.substring(2).trim()}</h1>`;
-                    } else if (linha.startsWith('## ')) {
-                        textoFormatado += `<h2>${linha.substring(3).trim()}</h2>`;
-                    } else if (linha.startsWith('### ')) {
-                        textoFormatado += `<h3>${linha.substring(4).trim()}</h3>`;
-                    } else if (linha.trim() === '') {
-                        textoFormatado += '<br>';
-                    } else {
-                        textoFormatado += `<p>${linha.trim()}</p>`;
-                    }
-                });
-
-                return textoFormatado;
-            }
-
-            // Função para mostrar o texto formatado
-            function mostrarTextoFormatado(texto) {
-                const conteudo = document.getElementById('conteudo');
-                conteudo.innerHTML = formatarTexto(texto);
-            }
-
-            // PHP para buscar e passar o texto formatado
-            <?php
-            require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php';
-
-            // Consulta SQL
-            $busca = "SELECT descricaoCompleta FROM produtos WHERE id ";
-            $result = $banco->query($busca);
-
-            if ($result->num_rows > 0) {
-                // Buscar o texto
-                $row = $result->fetch_assoc();
-                $texto = $row['descricaoCompleta'];
-            } else {
-                $texto = ''; // Caso não haja texto
-            }
-            ?>
-            // Passa o texto recuperado do PHP para o JavaScript
-            const texto = <?php echo json_encode($texto); ?>;
-            mostrarTextoFormatado(texto); // Chama a função do Formatador.js
+            const texto = <?php echo json_encode($product['descricaoCompleta']); ?>;
+            mostrarTextoFormatado(texto);
         </script>
     </div>
+
 
 
 

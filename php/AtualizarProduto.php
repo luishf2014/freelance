@@ -1,70 +1,111 @@
 <?php
-require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php'; // Ajuste o caminho conforme necessário
+include 'BD.php';
+$response = []; // Para armazenar mensagens de resposta
 
-// Função para limpar os dados e evitar SQL Injection
-function limpar_dado($dado) {
-    global $banco;
-    return mysqli_real_escape_string($banco, trim($dado));
-}
+// Definir o cabeçalho como JSON logo no início
+header('Content-Type: application/json');
 
-// Verificar se o ID do produto foi passado
-if (isset($_POST['id'])) {
-    $id = limpar_dado($_POST['id']);
-    $nome = limpar_dado($_POST['nome']);
-    $marca = limpar_dado($_POST['marca']);
-    $precoAtual = str_replace(',', '.', limpar_dado($_POST['precoAtual']));
-    $precoAnterior = str_replace(',', '.', limpar_dado($_POST['precoAnterior']));
-    $desconto = limpar_dado($_POST['desconto']);
-    $descricaoCompleta = limpar_dado($_POST['descricaoCompleta']);
-    $parcelas = limpar_dado($_POST['parcelas']);
-    $categoria = limpar_dado($_POST['categoria']);
+// Verificar se o formulário foi enviado e o ID do produto está presente
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['produto_id'])) {
+    $produto_id = intval($_POST['produto_id']);
 
-    // Atualizar as informações do produto
-    $query = "UPDATE produtos SET nome='$nome', marca='$marca', precoAtual='$precoAtual', precoAnterior='$precoAnterior', porcentagemDesconto='$desconto', descricaoCompleta='$descricaoCompleta', parcelas='$parcelas', categoria_id='$categoria' WHERE id='$id'";
-    
-    if ($banco->query($query) === TRUE) {
-        echo "Produto atualizado com sucesso.<br>";
-    } else {
-        echo "Erro ao atualizar produto: " . $banco->error . "<br>";
+    // Escapar e validar dados
+    $nome = $banco->real_escape_string(trim($_POST['nome']));
+    $marca = $banco->real_escape_string(trim($_POST['marca']));
+    $precoAtual = floatval($_POST['precoAtual']);
+    $precoAnterior = isset($_POST['precoAnterior']) ? floatval($_POST['precoAnterior']) : null;
+    $porcentagemDesconto = isset($_POST['porcentagem']) ? floatval($_POST['porcentagem']) : null;
+    $descricaoCompleta = $banco->real_escape_string(trim($_POST['descricaoCompleta']));
+    $parcelas = $_POST['parcelas'];
+    $categoria_id = intval($_POST['categoria_id']);
+
+    // Validações adicionais
+    if ($precoAtual <= 0) {
+        $response['status'] = 'error';
+        $response['message'] = 'Preço atual deve ser um valor positivo.';
+        echo json_encode($response);
+        exit();
+    }
+    if ($precoAnterior !== null && $precoAnterior <= 0) {
+        $response['status'] = 'error';
+        $response['message'] = 'Preço anterior deve ser um valor positivo.';
+        echo json_encode($response);
+        exit();
+    }
+    if ($categoria_id <= 0) {
+        $response['status'] = 'error';
+        $response['message'] = 'Categoria inválida.';
+        echo json_encode($response);
+        exit();
+    }
+    if ($porcentagemDesconto < 0 || $porcentagemDesconto > 100) {
+        $response['status'] = 'error';
+        $response['message'] = 'Porcentagem de desconto deve estar entre 0 e 100.';
+        echo json_encode($response);
+        exit();
     }
 
-    // Manipular o upload de imagens
-    if (!empty($_FILES['imagens']['name'][0])) {
-        $totalFiles = count($_FILES['imagens']['name']);
-        for ($i = 0; $i < $totalFiles; $i++) {
-            $fileName = $_FILES['imagens']['name'][$i];
-            $fileTmpName = $_FILES['imagens']['tmp_name'][$i];
-            $fileError = $_FILES['imagens']['error'][$i];
-            $fileSize = $_FILES['imagens']['size'][$i];
-            $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    // Preparar a declaração SQL para atualizar o produto
+    $stmt = $banco->prepare("UPDATE produtos SET nome = ?, marca = ?, precoAtual = ?, precoAnterior = ?, porcentagemDesconto = ?, descricaoCompleta = ?, parcelas = ?, categoria_id = ? WHERE id = ?");
+    $stmt->bind_param('ssdddssii', $nome, $marca, $precoAtual, $precoAnterior, $porcentagemDesconto, $descricaoCompleta, $parcelas, $categoria_id, $produto_id);
 
-            if ($fileError === 0) {
-                if ($fileSize < 2000000) { // Limite de tamanho: 2MB
-                    $fileDestination = 'uploads/' . uniqid('', true) . "." . $fileExt;
-                    if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                        // Atualizar ou inserir a nova imagem no banco de dados
-                        $queryImage = "INSERT INTO imagens (produto_id, url_imagem) VALUES ('$id', '$fileDestination')";
-                        if ($banco->query($queryImage) === TRUE) {
-                            echo "Imagem enviada com sucesso.<br>";
-                        } else {
-                            echo "Erro ao enviar imagem: " . $banco->error . "<br>";
-                        }
-                    } else {
-                        echo "Erro ao mover a imagem para o diretório de uploads.<br>";
-                    }
-                } else {
-                    echo "O arquivo é muito grande.<br>";
+    // Executar a declaração
+    if ($stmt->execute()) {
+        // Atualizar imagens, se houver novas imagens enviadas
+        if (isset($_FILES['imagens'])) {
+            $target_dir = "UploadsImagensCards/";
+            $uploaded_files = $_FILES['imagens'];
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+            foreach ($uploaded_files['tmp_name'] as $key => $tmp_name) {
+                if (!in_array($uploaded_files['type'][$key], $allowedTypes)) {
+                    $response['status'] = 'error';
+                    $response['message'] = 'Tipo de arquivo não permitido.';
+                    echo json_encode($response);
+                    exit();
                 }
-            } else {
-                echo "Erro ao enviar o arquivo.<br>";
+                if ($uploaded_files['size'][$key] > 5 * 1024 * 1024) {
+                    $response['status'] = 'error';
+                    $response['message'] = 'O arquivo é muito grande.';
+                    echo json_encode($response);
+                    exit();
+                }
+
+                $target_file = $target_dir . basename($uploaded_files['name'][$key]);
+                if (move_uploaded_file($tmp_name, $target_file)) {
+                    $url_imagem = $target_file;
+
+                    // Verificar se a imagem já existe e atualizar ou inserir nova imagem
+                    $stmt_imagem = $banco->prepare("SELECT COUNT(*) FROM imagens WHERE produto_id = ? AND id = ?");
+                    $stmt_imagem->bind_param('ii', $produto_id, $key);
+                    $stmt_imagem->execute();
+                    $stmt_imagem->bind_result($count);
+                    $stmt_imagem->fetch();
+
+                    if ($count > 0) {
+                        // Atualizar imagem existente
+                        $stmt_update_imagem = $banco->prepare("UPDATE imagens SET url_imagem = ? WHERE produto_id = ? AND id = ?");
+                        $stmt_update_imagem->bind_param('sii', $url_imagem, $produto_id, $key);
+                        $stmt_update_imagem->execute();
+                    } else {
+                        // Inserir nova imagem
+                        $stmt_insert_imagem = $banco->prepare("INSERT INTO imagens (produto_id, url_imagem) VALUES (?, ?)");
+                        $stmt_insert_imagem->bind_param('is', $produto_id, $url_imagem);
+                        $stmt_insert_imagem->execute();
+                    }
+                }
             }
         }
+
+        $response['status'] = 'success';
+        $response['message'] = 'Produto atualizado com sucesso';
+    } else {
+
+        $response['message'] = 'Erro: ' . $stmt->error;
     }
 
-    // Redirecionar para a lista de produtos ou outra página
-    // header("Location: ListaProdutos.php");
-    exit();
-} else {
-    echo "ID do produto não fornecido.";
+    $stmt->close();
 }
-?>
+
+$banco->close();
+echo json_encode($response);

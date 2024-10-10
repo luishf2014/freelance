@@ -251,6 +251,80 @@
         .cancel-button {
             background-color: #dc3545;
         }
+
+        /* mensagem */
+        /* Estilo do toast */
+        .toast {
+            position: fixed;
+            left: 50%;
+            top: 85%;
+            /* bottom: 20px; */
+            /* Distância do fundo da página */
+            transform: translateX(-50%);
+            /* Centraliza horizontalmente */
+            background-color: #333;
+            color: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            /* Adiciona transição */
+            display: none;
+            /* Inicialmente escondido */
+        }
+
+        /* Toast visível */
+        .toast.show {
+            display: block;
+            /* Torna o toast visível */
+            opacity: 1;
+        }
+
+        /* Toast oculto */
+        .toast.hidden {
+            opacity: 0;
+            display: none;
+            /* Esconde o toast */
+        }
+
+        /* Ícone de sucesso */
+        .toast.success {
+            background-color: #4CAF50;
+        }
+
+        /* Ícone de erro */
+        .toast.error {
+            background-color: #F44336;
+        }
+
+        /* Estilo do ícone */
+        .toast-icon {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Mensagem do toast */
+        .toast-message {
+            display: inline;
+            vertical-align: middle;
+        }
+
+        #descricaoCompleta {
+            resize: vertical;
+            /* Permite redimensionar apenas na vertical */
+            width: 100%;
+            /* Adapta a largura ao container pai */
+        }
+
+        #descricaoCompleta {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -262,8 +336,8 @@
         <nav class="menu">
             <ul class="ul-mobile">
                 <li><a href="adm.html">Painel</a></li>
-                <Li><a href="AdicionarItens.php">Adicionar</a></Li
-                    </ul>
+                <Li><a href="AdicionarItens.php">Adicionar</a></Li>
+            </ul>
         </nav>
     </header>
 
@@ -315,7 +389,7 @@
                             <td>R$ " . number_format($row['precoAtual'], 2, ',', '.') . "</td>
                             <td>R$ " . number_format($row['precoAnterior'], 2, ',', '.') . "</td>
                             <td>{$desconto}</td>
-                            <td>{$row['parcelas']}</td>
+                            <td>{$row['parcelas']}x</td>
                             <td><a href='EditarItens.php?id={$row['id']}' class='action-buttons edit-btn'>Editar</a></td>
                             <td><a href='#' class='action-buttons remove-btn' data-id='{$row['id']}' data-nome='{$row['nome']}' data-marca='{$row['marca']}' data-precoAtual='{$row['precoAtual']}' data-precoAnterior='{$row['precoAnterior']}' data-parcelas='{$row['parcelas']}'>Remover</a></td>
                             <td><a href='#' class='action-buttons vermais-btn' data-id='{$row['id']}' data-nome='{$row['nome']}' data-marca='{$row['marca']}' data-precoAtual='{$row['precoAtual']}' data-precoAnterior='{$row['precoAnterior']}' data-parcelas='{$row['parcelas']}' data-descricao='{$row['descricaoCompleta']}'>Ver mais</a></td>
@@ -340,6 +414,12 @@
                 <button id="cancelButton" class="popup-button cancel-button">Cancelar</button>
             </div>
         </div>
+
+        <div id="toast" class="toast hidden">
+            <div id="toast-icon"></div>
+            <div id="toast-message"></div>
+        </div>
+
     </main>
 
     <script>
@@ -385,15 +465,14 @@
 
                 // Construir o conteúdo do pop-up
                 var contentHTML = `
-                    <p><strong>ID:</strong> ${id}</p>
-                    <p><strong>Nome:</strong> ${nome}</p>
-                    <p><strong>Marca:</strong> ${marca}</p>
-                    <p><strong>Preço Atual:</strong> R$ ${precoAtual.toFixed(2).replace('.', ',')}</p>`;
+            <p><strong>ID:</strong> ${id}</p>
+            <p><strong>Nome:</strong> ${nome}</p>
+            <p><strong>Marca:</strong> ${marca}</p>
+            <p><strong>Preço Atual:</strong> R$ ${precoAtual.toFixed(2).replace('.', ',')}</p>`;
 
                 // Verificar se existe um preço anterior válido e calcular o desconto
                 if (precoAnterior > 0) {
                     contentHTML += `<p><strong>Preço Anterior:</strong> R$ ${precoAnterior.toFixed(2).replace('.', ',')}</p>`;
-
                     // Calcular o desconto
                     var desconto = Math.round(((precoAnterior - precoAtual) / precoAnterior) * 100);
                     contentHTML += `<p><strong>Desconto:</strong> ${desconto}%</p>`;
@@ -401,17 +480,27 @@
                     contentHTML += `<p><strong>Desconto:</strong> Sem desconto</p>`;
                 }
 
-                contentHTML += `<p><strong>Parcelas:</strong> ${parcelas}</p>`;
+                contentHTML += `<p><strong>Parcelas:</strong> ${parcelas}x</p>`;
+                contentHTML += `<p>Tem certeza de que deseja remover este produto?</p>`;
 
                 // Inserir o conteúdo construído no pop-up
                 popupContent.innerHTML = contentHTML;
 
-                // Configurar botões de confirmação e cancelamento
-                document.getElementById('confirmButton').style.display = 'inline-block';
-                document.getElementById('cancelButton').style.display = 'inline-block';
-
                 // Mostrar o pop-up
                 popup.style.display = 'flex';
+
+                // Lidar com a confirmação de remoção
+                document.getElementById('confirmButton').onclick = function() {
+                    // Chamar a função para excluir o produto
+                    deleteProduct(id);
+                    // Fechar o pop-up após a exclusão
+                    popup.style.display = 'none';
+                };
+
+                // Lidar com o botão de cancelamento da exclusão
+                document.getElementById('cancelButton').onclick = function() {
+                    popup.style.display = 'none';
+                };
             });
         });
 
@@ -420,9 +509,43 @@
             document.getElementById('popup').style.display = 'none';
         });
 
-        document.getElementById('cancelButton').addEventListener('click', function() {
-            document.getElementById('popup').style.display = 'none';
-        });
+        // Função para mostrar o toast
+        function showToast(message, type) {
+            var toast = document.getElementById('toast');
+            var toastMessage = document.getElementById('toast-message');
+            var toastIcon = document.getElementById('toast-icon');
+
+            toastMessage.textContent = message;
+            toast.className = 'toast show ' + type;
+
+            // Ocultar o toast após 3 segundos
+            setTimeout(function() {
+                toast.className = 'toast hidden ' + type;
+                setTimeout(function() {
+                    window.location.href = '../teste/ListaEditar.php';
+                }, 100);
+            }, 3000);
+        }
+
+        // Função para excluir o produto
+        function deleteProduct(productId) {
+            fetch(`php/RemoverProduto.php?id=${productId}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast('Produto removido com sucesso! 🚀', 'success');
+                        // Recarregar a lista de produtos ou a página parcial
+                        atualizarListaDeProdutos(); // Função que carrega a lista novamente, por exemplo.
+                    } else {
+                        showToast('Erro ao remover o produto. Tente novamente.', 'error');
+                    }
+                })
+                .catch(error => {
+                    showToast('Erro ao remover o produto. Tente novamente.', 'error');
+                });
+        }
     </script>
 </body>
 

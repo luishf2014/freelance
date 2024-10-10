@@ -267,7 +267,7 @@
         </nav>
     </header>
     <?php
-    require_once '/xampp/htdocs/_aProjeto/teste/php/getCategoria.php';
+    require_once 'php/getCategoria.php';
     ?>
     <main class="main">
 
@@ -437,7 +437,10 @@
             // Ocultar o toast após 3 segundos
             setTimeout(function() {
                 toast.className = 'toast hidden ' + type;
-            }, 1000000);
+                setTimeout(function() {
+                    window.location.href = '../teste/ListaEditar.php';
+                }, 100);
+            }, 3000);
         }
 
         // Exemplo de como usar a função showToast

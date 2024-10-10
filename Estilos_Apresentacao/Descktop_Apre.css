@@ -467,7 +467,7 @@
         /* min-height: 374vh; */
         min-height: 389vh;
         /* display: flex; */
-        background-color: rgb(152, 152, 152);
+        /* background-color: rgb(152, 152, 152); */
         /* cinza claro*/
         /* background-color: rgb(37, 37, 37);  cinza escuro*/
         /* background-color: rgb(1, 88, 1);  verde */
@@ -476,7 +476,7 @@
 
     /* Imagem de Fundo do Site */
     .pontilhado {
-        background-image: url('/Uploads/bg-pontilhado.png');
+        background-image: url('../teste/Uploads/bg-pontilhado.png');
         background-size: cover;
         /* Ajusta a imagem para cobrir toda a área */
         background-position: center;

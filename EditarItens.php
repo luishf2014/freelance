@@ -227,7 +227,7 @@
         </nav>
     </header>
     <?php
-    require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php'; // Ajuste o caminho conforme necessário
+    require_once 'php/BD.php'; // Ajuste o caminho conforme necessário
 
     $id = $_GET['id'];
 
@@ -240,7 +240,7 @@
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
-
+    
     if ($result->num_rows > 0) {
         $product = $result->fetch_assoc();
     } else {
@@ -251,8 +251,8 @@
     <main class="main">
         <div class="form-container">
             <h1>Editar Produto</h1>
-            <form id="editForm" action="AtualizarProduto.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" id="produtoId" name="produtoId" value="<?php echo $product['id']; ?>">
+            <form id="editForm" action="php/AtualizarProduto.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" id="produto_id" name="produto_id" value="<?php echo $product['id']; ?>">
 
                 <label for="categoria">Categoria:</label>
                 <select id="categoria" name="categoria_id" required>
@@ -286,8 +286,24 @@
                 <label for="descricaoCompleta">Descrição Completa:</label>
                 <textarea id="descricaoCompleta" name="descricaoCompleta" rows="4" placeholder="Digite a descrição completa" required><?php echo htmlspecialchars($product['descricaoCompleta']); ?></textarea>
 
-                <label for="parcelas">Número de Parcelas:</label>
-                <input type="number" id="parcelas" name="parcelas" placeholder="Número de parcelas" value="<?php echo htmlspecialchars($product['parcelas']); ?>" required>
+                <label for="parcelas">Parcelas:</label>
+                <select name="parcelas" id="parcelas" required>
+                    <option value="" disabled>Selecione quantas parcelas você vai disponibilizar sem juros</option>
+                    <option value="1" <?php echo ($product['parcelas'] == '1') ? 'selected' : ''; ?>>1x</option>
+                    <option value="2" <?php echo ($product['parcelas'] == '2') ? 'selected' : ''; ?>>2x</option>
+                    <option value="3" <?php echo ($product['parcelas'] == '3') ? 'selected' : ''; ?>>3x</option>
+                    <option value="4" <?php echo ($product['parcelas'] == '4') ? 'selected' : ''; ?>>4x</option>
+                    <option value="5" <?php echo ($product['parcelas'] == '5') ? 'selected' : ''; ?>>5x</option>
+                    <option value="6" <?php echo ($product['parcelas'] == '6') ? 'selected' : ''; ?>>6x</option>
+                    <option value="7" <?php echo ($product['parcelas'] == '7') ? 'selected' : ''; ?>>7x</option>
+                    <option value="8" <?php echo ($product['parcelas'] == '8') ? 'selected' : ''; ?>>8x</option>
+                    <option value="9" <?php echo ($product['parcelas'] == '9') ? 'selected' : ''; ?>>9x</option>
+                    <option value="10" <?php echo ($product['parcelas'] == '10') ? 'selected' : ''; ?>>10x</option>
+                    <option value="11" <?php echo ($product['parcelas'] == '11') ? 'selected' : ''; ?>>11x</option>
+                    <option value="12" <?php echo ($product['parcelas'] == '12') ? 'selected' : ''; ?>>12x</option>
+                </select>
+
+
 
 
                 <div class="image-upload">
@@ -306,39 +322,20 @@
                     while ($img = $images_result->fetch_assoc()) {
                         $input_id = "imagem" . $imageIndex;
                         $preview_id = "preview-imagem" . $imageIndex;
-                        $image_url = $img['url_imagem'];
+                        $image_url = $caminhoBase . $img['url_imagem'];
                         $image_id = $img['id']; // ID da imagem para o campo oculto
+                    ?>
 
-                        // Construa o caminho completo da imagem
-                        $full_image_url = $caminhoBase . $image_url;
+                        <div class="field-group">
+                            <label for="<?php echo $input_id; ?>">Imagem <?php echo $imageIndex; ?>:</label>
+                            <div class="image-preview">
+                                <img src="<?php echo $image_url; ?>" alt="Imagem <?php echo $imageIndex; ?>" id="<?php echo $preview_id; ?>">
+                            </div>
+                            <input type="hidden" name="imagem_id<?php echo $imageIndex; ?>" value="<?php echo $image_id; ?>">
+                            <input type="file" id="<?php echo $input_id; ?>" name="imagem<?php echo $imageIndex; ?>" accept="image/*" onchange="previewImage('<?php echo $input_id; ?>', '<?php echo $preview_id; ?>')">
+                        </div>
 
-                        echo "<div class='image-preview'>";
-                        echo "<label for='$input_id'>Imagem $imageIndex:</label>";
-
-                        // Verifica e exibe a imagem atual
-                        if (!empty($image_url)) {
-                            echo "<img id='$preview_id' src='$full_image_url' style='max-width: 200px; max-height: 200px;' alt='Imagem do produto'>";
-                        } else {
-                            // Mensagem quando não há imagem
-                            echo "<div id='$preview_id' style='max-width: 50px; max-height: 50px; line-height: 200px; text-align: center; border: 1px solid #ddd; color: #666;'>Sem imagem</div>";
-                        }
-
-                        echo "<input type='file' id='$input_id' name='imagens[]' accept='image/*'>";
-                        echo "<input type='hidden' name='imagem_ids[]' value='$image_id'>"; // Adiciona um campo oculto para o ID da imagem
-                        echo "</div>";
-
-                        $imageIndex++;
-                    }
-
-                    // Adiciona campos adicionais se necessário
-                    while ($imageIndex <= 4) {
-                        $input_id = "imagem" . $imageIndex;
-                        $preview_id = "preview-imagem" . $imageIndex;
-                        echo "<div class='image-preview'>";
-                        echo "<label for='$input_id'>Imagem $imageIndex:</label>";
-                        echo "<div id='$preview_id' style='max-width: 200px; max-height: 200px; line-height: 200px; text-align: center; border: 1px solid #ddd; color: #666;'>Sem imagem</div>";
-                        echo "<input type='file' id='$input_id' name='imagens[]' accept='image/*'>";
-                        echo "</div>";
+                    <?php
                         $imageIndex++;
                     }
                     ?>
@@ -354,47 +351,78 @@
             </form>
         </div>
     </main>
-
-    <div id="toast" class="toast"></div>
-
     <script>
         // Script para atualizar o preview das imagens
-        document.querySelectorAll('input[type="file"]').forEach(input => {
-            input.addEventListener('change', event => {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = e => {
-                        const previewImg = document.querySelector(`#preview-${event.target.id}`);
-                        previewImg.src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        });
+        function previewImage(inputId, previewId) {
+            var input = document.getElementById(inputId);
+            var preview = document.getElementById(previewId);
 
-        // Função de cálculo de desconto
-        function calcularDesconto() {
-            const precoAtual = parseFloat(document.getElementById('precoAtual').value);
-            const precoAnterior = parseFloat(document.getElementById('precoAnterior').value);
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            }
 
-            if (precoAtual && precoAnterior && precoAtual < precoAnterior) {
-                const desconto = ((precoAnterior - precoAtual) / precoAnterior) * 100;
-                document.getElementById('porcentagem').value = `${desconto.toFixed(2)}%`;
-            } else {
-                document.getElementById('porcentagem').value = '';
+            if (input.files && input.files[0]) {
+                reader.readAsDataURL(input.files[0]);
             }
         }
 
-        // Função de exibição de toast
-        function showToast(message, type) {
-            const toast = document.getElementById('toast');
-            toast.className = `toast ${type} show`;
-            toast.textContent = message;
-            setTimeout(() => {
-                toast.className = `toast ${type} hidden`;
-            }, 30000);
+        // Função para calcular a porcentagem de desconto
+        function calcularDesconto() {
+            var precoAtual = parseFloat(document.getElementById('precoAtual').value);
+            var precoAnterior = parseFloat(document.getElementById('precoAnterior').value);
+            var porcentagem = document.getElementById('porcentagem');
+
+            if (!isNaN(precoAtual) && !isNaN(precoAnterior) && precoAnterior > 0) {
+                var desconto = ((precoAnterior - precoAtual) / precoAnterior) * 100;
+                porcentagem.value = desconto.toFixed(0) + '%';
+            } else {
+                porcentagem.value = '';
+            }
         }
+
+
+        /* mensagem */
+        // Função para mostrar o toast
+        function showToast(message, type) {
+            var toast = document.getElementById('toast');
+            var toastMessage = document.getElementById('toast-message');
+            var toastIcon = document.getElementById('toast-icon');
+
+            toastMessage.textContent = message;
+            toast.className = 'toast show ' + type;
+
+            // Ocultar o toast após 3 segundos
+            setTimeout(function() {
+                toast.className = 'toast hidden ' + type;
+                setTimeout(function() {
+                    window.location.href = '../teste/ListaEditar.php';
+                }, 100);
+            }, 3000);
+        }
+
+        // Exemplo de como usar a função showToast
+        // Quando o formulário for enviado
+        document.querySelector('#editForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o envio do formulário
+
+            var formData = new FormData(this);
+            fetch('php/AtualizarProduto.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(result => {
+                    // Mostrar a mensagem de sucesso
+                    showToast('Produto editado com sucesso! 🚀', 'success');
+
+
+                })
+                .catch(error => {
+                    // Mostrar a mensagem de erro
+                    showToast('Erro ao editar o produto. Tente novamente. ', 'error');
+                });
+        });
     </script>
 </body>
 

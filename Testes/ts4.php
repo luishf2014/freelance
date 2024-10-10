@@ -1,89 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo de Texto Formatado</title>
-
-    <script src="/Scripts/Formatador.js"></script> <!-- Certifique-se de que este caminho está correto -->
-
+    <title>Kit Óleo e Balm para Barba Smaak Canela & Rum Embaixador</title>
     <style>
-        /* Estilos para o texto formatado */
-        h1,
-        h2,
-        h3 {
-            margin: 10px 0;
-            /* Espaço acima e abaixo dos títulos */
-            font-weight: bold;
-            /* Garante que os títulos estejam em negrito */
+        .price-container {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
         }
 
-        p {
-            margin: 5px 0;
-            /* Espaço acima e abaixo dos parágrafos */
+        .previous-price {
+            margin-right: 20px;
+            /* Espaço entre o preço anterior e o atual */
         }
 
-        br {
-            display: block;
-            content: "";
-            margin: 25px 0;
-            /* Ajuste o valor conforme necessário */
+        .current-price {
+            margin-right: 10px;
+            /* Espaço entre o preço atual e o desconto */
+        }
+
+        .payment-info {
+            margin-left: auto;
+            /* Alinha o texto à direita */
+        }
+
+        .installments-info {
+            margin-top: 5px;
+            /* Espaço acima do texto de parcelas */
+            font-size: 16px;
+            /* Tamanho do texto */
+            color: #999;
+            /* Cor do texto */
         }
     </style>
 </head>
 
 <body>
-    <div id="conteudo"></div>
-    <script>
-        // Função para formatar o texto
-        function formatarTexto(texto) {
-            const linhas = texto.split('\n');
-            let textoFormatado = '';
+    <?php
+    require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php'; // Ajuste o caminho conforme necessário
 
-            linhas.forEach((linha) => {
-                if (linha.startsWith('# ')) {
-                    textoFormatado += `<h1>${linha.substring(2).trim()}</h1>`;
-                } else if (linha.startsWith('## ')) {
-                    textoFormatado += `<h2>${linha.substring(3).trim()}</h2>`;
-                } else if (linha.startsWith('### ')) {
-                    textoFormatado += `<h3>${linha.substring(4).trim()}</h3>`;
-                } else if (linha.trim() === '') {
-                    textoFormatado += '<br>';
-                } else {
-                    textoFormatado += `<p>${linha.trim()}</p>`;
-                }
-            });
+    $id = $_GET['id'];
 
-            return textoFormatado;
-        }
+    // Busque o produto
+    $query = "SELECT p.id, p.nome, p.marca, p.precoAtual, p.precoAnterior, p.porcentagemDesconto, p.descricaoCompleta, p.parcelas, p.categoria_id, c.nome AS categoria_nome
+    FROM produtos p
+    JOIN categorias c ON p.categoria_id = c.id
+    WHERE p.id = ?";
+    $stmt = $banco->prepare($query);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        // Função para mostrar o texto formatado
-        function mostrarTextoFormatado(texto) {
-            const conteudo = document.getElementById('conteudo');
-            conteudo.innerHTML = formatarTexto(texto);
-        }
+    if ($result->num_rows > 0) {
+        $product = $result->fetch_assoc();
+    } else {
+        echo "<p>Produto não encontrado.</p>";
+        exit;
+    }
+    ?>
+    <div class="price-container">
+        <?php if (isset($product['precoAnterior']) && $product['precoAnterior'] > 0): ?>
+            <div class="previous-price" style="color: red; text-decoration: line-through;">
+                de R$ <?php echo number_format($product['precoAnterior'], 2, ',', '.'); ?>
+            </div>
+        <?php endif; ?>
 
-        // PHP para buscar e passar o texto formatado
-        <?php
-        require_once '/xampp/htdocs/_aProjeto/teste/php/BD.php';
+        <p class="current-price" style="font-size: 28px; color: green; font-weight: bold;">
+            R$ <?php echo number_format($product['precoAtual'], 2, ',', '.'); ?>
+        </p>
 
-        // Consulta SQL
-        $busca = "SELECT descricaoCompleta FROM produtos WHERE id = 5";
-        $result = $banco->query($busca);
+        <?php if (isset($product['porcentagemDesconto']) && $product['porcentagemDesconto'] > 0): ?>
+            <span class="discount-label" style="background-color: red; color: white; padding: 3px 8px; border-radius: 5px; margin-left: 10px;">
+                -<?php echo round($product['porcentagemDesconto'], 2); ?>%
+            </span>
+        <?php endif; ?>
 
-        if ($result->num_rows > 0) {
-            // Buscar o texto
-            $row = $result->fetch_assoc();
-            $texto = $row['descricaoCompleta'];
-        } else {
-            $texto = ''; // Caso não haja texto
-        }
-        ?>
-        // Passa o texto recuperado do PHP para o JavaScript
-        const texto = <?php echo json_encode($texto); ?>;
-        mostrarTextoFormatado(texto); // Chama a função do Formatador.js
-    </script>
+        <span class="payment-info" style="color: #999;">
+            💳 R$ <?php echo number_format($product['precoAtual'], 2, ',', '.'); ?> no PIX
+        </span>
+
+        <p class="installments-info">
+            em até 2x de R$ <?php echo number_format($product['precoAtual'] / 2, 2, ',', '.'); ?> sem juros
+        </p>
+    </div>
+
 </body>
 
 </html>
